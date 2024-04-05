@@ -1,0 +1,786 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* NAVBAR */
+.menu-navbar {
+  font-family: 'Montserrat';
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 12px;
+  float: right;
+  margin-top: 13px;
+  margin-right: 30px;
+  padding: 0px;
+  font-weight: 600;
+}
+
+
+
+
+#keterangan-logo {
+  font-weight: 500;
+  font-style: italic;
+  font-family: 'Inter';
+  font-size: small;
+}
+
+#nama-web {
+  font-weight: 1500;
+  font-size: larger;
+  font-family: 'Inter';
+}
+
+.menu a:link {
+  color: rgb(255, 255, 255);
+}
+
+.menu a:visited {
+  color: rgb(255, 255, 255);
+}
+
+.menu a:hover {
+  color: #b5b5b5;
+}
+
+.menu a:nth-child(3) {
+  color: #b5b5b5;
+}
+
+.navbar {
+  padding: 10px;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 30px;
+}
+
+.logo {
+  width: 50px;
+}
+
+.icon-name > table {
+  border-collapse: collapse;
+  padding: 0px;
+}
+
+.icon-name {
+  margin-top: -7px;
+}
+
+.navbar table tr td {
+  color: white;
+  vertical-align: top;
+}
+
+.navbar table tr:nth-child(2) > td {
+  vertical-align: bottom;
+}
+
+.navbar table tr:nth-child(3) > td {
+  vertical-align: top;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.navbar table tr td > img {
+  margin: 1px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+header {
+  background-color: #3f496c;
+  margin: 0px;
+  position: sticky;
+  top: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* NAVBAR END */
+
+/* FOOTER */
+footer {
+  clear: both;
+  background-color: #1c2541;
+  height: 150px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.keterangan-footer {
+  border-right: 1px solid #a4a4a4;
+  width: 23%;
+  height: 95%;
+  margin: 5px;
+  float: left;
+  color: white;
+  padding-right: 5px;
+  padding-left: 10px;
+}
+
+.keterangan-footer h1 {
+  color: #e2e2e2;
+  font-size: 20px;
+  font-family: 'Montserrat';
+  font-weight: 150px;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.keterangan-footer p {
+  color: #e2e2e2;
+  font-size: 12px;
+  font-family: 'Montserrat';
+  margin: 0;
+}
+
+.kontak {
+  width: 15%;
+  height: 95%;
+  margin: 5px;
+  float: left;
+  margin-right: 3%;
+  margin-left: 4%;
+}
+
+.kontak h1 {
+  color: #e2e2e2;
+  margin: 0;
+  font-size: 25px;
+  font-family: 'Montserrat';
+  text-align: center;
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.informasi {
+  /* border-right: 1px solid white; */
+  width: 15%;
+  height: 95%;
+  margin: 5px;
+  float: left;
+  margin-right: 8%;
+  margin-left: 4%;
+}
+
+.informasi h1 {
+  color: #e2e2e2;
+  margin: 0;
+  font-size: 25px;
+  font-family: 'Montserrat';
+  text-align: center;
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.bantu {
+  color: #e2e2e2;
+}
+
+.username {
+  color: #e2e2e2;
+}
+
+.contact-us {
+  border-left: 1px solid rgb(152, 152, 152);
+  width: 25%;
+  height: 95%;
+  margin: 5px;
+  margin-left: 50px;
+  margin: auto;
+  /* padding-left: 10p; */
+  /* margin-right: 10px; */
+  float: left;
+}
+
+.contact-us h1 {
+  color: #e2e2e2;
+  margin: 0;
+  font-size: 25px;
+  font-family: 'Montserrat';
+  text-align: center;
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 5px;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+}
+
+.copyright p {
+  background-color: #1c2541;
+  clear: both;
+  letter-spacing: 5px;
+  text-align: center;
+  color: rgb(202, 202, 202);
+  padding: 7px;
+  margin: 0px;
+  font-family: 'Montserrat';
+}
+
+.kontak1 {
+  color: #e2e2e2;
+  padding-left: 15px;
+}
+
+.table-kontak {
+  font-size: medium;
+  font-weight: lighter;
+  padding-left: 10px;
+}
+
+.email {
+  color: #e2e2e2;
+  padding-bottom: 7px;
+  padding-right: 50px;
+}
+
+.gambaremail {
+  padding-left: 10px;
+}
+
+.gambartelpon {
+  padding-left: 10px;
+}
+
+.notel {
+  color: #e2e2e2;
+  padding-top: 8px;
+}
+
+textarea {
+  resize: none;
+}
+
+.ig {
+  color: #e2e2e2;
+  bottom: 15px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.ig img {
+  margin-top: 0;
+  width: 25px;
+  height: 25px;
+}
+
+.syarat {
+  color: #e2e2e2;
+  padding-left: 50px;
+  padding-bottom: 7px;
+}
+
+.faq {
+  color: #e2e2e2;
+  padding-left: 50px;
+  padding-bottom: 7px;
+}
+
+.bayar {
+  color: #e2e2e2;
+  padding-left: 50px;
+  padding-bottom: 7px;
+}
+
+.bantu {
+  padding-left: 50px;
+  padding-bottom: 7x;
+}
+
+.form {
+  padding-left: 16%;
+  padding-top: 10px;
+}
+
+.submit {
+  color: rgb(253, 253, 253);
+  background-color: #627a91;
+  box-shadow: 2px 2px 2px 2px rgb(240, 238, 238);
+  border-radius: 10px;
+  box-shadow: 1px 1px rgb(73, 73, 73);
+  float: right;
+  margin-right: 17%;
+  border: none;
+  transition: 0.5s;
+}
+
+.submit:hover {
+  background-color: #d4d4d4;
+  color: black;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+/* FOOTER END */
+
+/* MAIN */
+
+.judul-halaman {
+  margin-top: 10px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.judul-halaman .breadcrums ul{
+  display: flex;
+  list-style-type: none;
+  gap: 10px;
+}
+
+
+.judul-halaman .breadcrums ul li a{
+  text-decoration: none;
+  color: #3f496c;
+}
+
+.judul-halaman .breadcrums{
+  font-size: 15px;
+  font-family: 'Montserrat';
+  margin-top: 13px;
+  font-weight: bold;
+  color: #3f496c;
+  margin-right: 50px;
+  
+}
+
+div.judul-halaman h1 {
+  display: inline;
+  margin-left: 0px;
+  padding-left: 5px;
+  vertical-align: middle;
+  margin-left: 50px;
+}
+
+div.tombol-back-detail {
+  display: inline;
+}
+
+div.tombol-back-detail input {
+  display: inline;
+  font-family: 'Montserrat';
+  height: 30px;
+  margin-left: 70px;
+  margin-right: 0;
+  border-radius: 10px;
+  background-color: #3f496c;
+  color: white;
+  transition: 0.3ms;
+}
+
+div.tombol-back-detail input:hover {
+  background-color: #b3b2b2;
+  color: black;
+  transition: 0.3ms;
+  cursor: pointer;
+}
+
+div.tombol-back-detail input:active {
+  background-color: #444444;
+  color: black;
+}
+
+.kotak-detail {
+  background-color: #c5c5c5;
+  padding-bottom: 10px;
+}
+
+.kotak-detail hr {
+  border: 1px solid #484848;
+  width: 92%;
+  margin-bottom: 15px;
+  margin-top: -20px;
+  
+}
+
+.judul-halaman {
+  margin-bottom: 25px;
+}
+
+.judul-halaman h1 {
+  color: #444444;
+  font-family: 'Montserrat';
+  font-size: 27px;
+  font-weight: bolder;
+  padding-top: 10px;
+  padding-left: 50px;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.judul-halaman hr {
+  border: 1px solid #484848;
+  width: 93%;
+}
+
+.gambar-konser-detail {
+  width: 30%;
+  margin-left: 50px;
+  float: left;
+  margin-right: 15px;
+  border-collapse: collapse;
+}
+
+.gambar-konser-detail img {
+  height: 393px;
+  border-radius: 20px;
+}
+
+.kotak-detail {
+  font-family: 'Montserrat';
+}
+
+.detail-kotak > table {
+  border-collapse: collapse;
+  float: left;
+  margin-left: 10px;
+  width: 61%;
+  height: 392px;
+  background-color: #eae8e8;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px 2px rgb(173, 173, 173);
+}
+
+.detail-kotak > table tr:nth-child(1) td:nth-child(1) {
+  border-bottom: 2px solid rgb(0, 0, 0);
+  padding-bottom: 15px;
+}
+
+.detail-kotak > table tr:nth-child(1) td:nth-child(1) p {
+  text-align: center;
+}
+
+.detail-kotak > table tr:nth-child(1) td:nth-child(1) p:nth-child(1) {
+  font-family: 'Montserrat';
+  font-size: 25px;
+  font-weight: 1000;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-style: italic;
+}
+
+.detail-kotak > table tr:nth-child(1) td:nth-child(1) p:nth-child(2) {
+  font-family: 'Montserrat';
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.detail-kotak > table tr:nth-child(2) td:nth-child(1) {
+  border-right: 2px solid rgb(0, 0, 0);
+  width: 50%;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(1) .deskripsi-detail > table {
+  border-collapse: collapse;
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(1) .deskripsi-detail > table tr td {
+  border-right: none;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(1) .deskripsi-detail > table tr:nth-child(1) td {
+  border-right: none;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(1) .deskripsi-detail > table tr:nth-child(2) td p {
+  border-right: none;
+  text-align: center;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(1) .deskripsi-detail > table tr:nth-child(2) td {
+  border-right: none;
+  text-align: center;
+  width: 300px;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(2) .deskripsi-singkat > table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(2) .deskripsi-singkat > table tr td {
+  border: none;
+  padding: 10px;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(2) .deskripsi-singkat > table tr td:nth-child(1) {
+  text-align: center;
+  width: 10px;
+  padding: 10px;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(2) .deskripsi-singkat > table tr td:nth-child(1) img {
+  text-align: center;
+  width: 25px;
+}
+
+.detail-kotak table tr:nth-child(2) td:nth-child(2) .deskripsi-singkat > table tr:nth-child(1) td:nth-child(2) {
+  font-weight: bold;
+}
+
+.detail-kotak > table tr:nth-child(1) {
+  height: 20%;
+}
+
+.gambar-kursi {
+  clear: both;
+  width: 93%;
+  margin-left: 50px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.gambar-kursi > table {
+  width: 100%;
+  height: 400px;
+  background-color: #eae8e8;
+  border-collapse: collapse;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px 2px rgb(173, 173, 173);
+}
+
+.gambar-kursi > table tr:nth-child(1) td:nth-child(1) {
+  border-right: 2px solid rgb(0, 0, 0);
+  width: 34%;
+}
+
+.gambar-kursi > table tr:nth-child(2) td {
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-top: 2px solid black;
+}
+
+.gambar-kursi > table tr:nth-child(3) td {
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-top: 2px solid black;
+}
+
+.gambar-kursi > table tr:nth-child(4) td {
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-top: 2px solid black;
+}
+
+.gambar-kursi > table tr:nth-child(1) td:nth-child(1) table tr td {
+  border: none;
+}
+
+.gambar-kursi > table tr:nth-child(1) td > table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gambar-kursi > table tr:nth-child(1) td > table tr > td {
+  text-align: center;
+}
+
+.gambar-kursi > table tr:nth-child(1) td > table tr:nth-child(2) > td {
+  font-style: italic;
+  color: black;
+  padding: 0;
+  letter-spacing: 0;
+  font-weight: 100;
+  font-size: 17px;
+}
+
+.gambar-kursi > table tr:nth-child(1) td > table tr > td > img {
+  width: 250px;
+}
+
+.gambar-kursi > table tr:nth-child(1) > td:nth-child(2) {
+  padding: 0;
+  padding-left: 75px;
+  color: rgb(0, 0, 0);
+  letter-spacing: 3px;
+  font-weight: 1000;
+  font-size: 20px;
+
+  width: 24%;
+}
+
+.gambar-kursi > table tr:nth-child(2) td:nth-child(1) {
+  padding: 0;
+  padding-left: 75px;
+  color: rgb(0, 0, 0);
+  letter-spacing: 3px;
+  font-weight: 1000;
+  font-size: 20px;
+}
+
+.gambar-kursi > table tr:nth-child(3) td:nth-child(1) {
+  padding: 0;
+  padding-left: 75px;
+  color: rgb(0, 0, 0);
+  letter-spacing: 3px;
+  font-weight: 1000;
+  font-size: 20px;
+}
+
+.gambar-kursi > table tr:nth-child(4) td:nth-child(1) {
+  padding: 0;
+  padding-left: 75px;
+  color: rgb(0, 0, 0);
+  letter-spacing: 3px;
+  font-weight: 1000;
+  font-size: 20px;
+}
+
+.gambar-kursi > table tr:nth-child(5) td:nth-child(1) {
+  padding-left: 75px;
+  font-size: 15px;
+  font-weight: 1000;
+  color: rgb(0, 0, 0);
+}
+
+.gambar-kursi > table tr:nth-child(5) td:nth-child(2) input {
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  width: 150px;
+  text-align: center;
+}
+
+/*  */
+
+.gambar-kursi > table tr:nth-child(1) td:nth-child(5) {
+  color: rgb(128, 128, 128);
+  padding-left: 0px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.gambar-kursi > table tr:nth-child(2) td:nth-child(4) {
+  color: rgb(128, 128, 128);
+  padding-left: 0px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.gambar-kursi > table tr:nth-child(3) td:nth-child(4) {
+  color: rgb(128, 128, 128);
+  padding-left: 0px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.gambar-kursi > table tr:nth-child(4) td:nth-child(4) {
+  color: rgb(128, 128, 128);
+  padding-left: 0px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.gambar-kursi > table tr:nth-child(1) td:nth-child(3) input {
+  width: 20px;
+}
+
+/*  */
+
+.gambar-kursi > table tr:nth-child(1) td:nth-child(4) {
+  width: 125px;
+  font-size: 15px;
+}
+
+.gambar-kursi > table tr:nth-child(1) td:nth-child(4) label {
+  font-size: 15px;
+}
+
+/*  */
+
+.gambar-kursi > table tr:nth-child(1) td:nth-child(4) input {
+  width: 35px;
+}
+
+.gambar-kursi > table tr:nth-child(2) td:nth-child(3) input {
+  width: 35px;
+}
+
+.gambar-kursi > table tr:nth-child(3) td:nth-child(3) input {
+  width: 35px;
+}
+
+.gambar-kursi > table tr:nth-child(4) td:nth-child(3) input {
+  width: 35px;
+}
+
+/*  */
+
+.gambar-kursi > table tr:nth-child(1) > td:nth-child(3) {
+  width: 24%;
+  padding-left: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.gambar-kursi > table tr:nth-child(2) td:nth-child(2) {
+  padding-left: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.gambar-kursi > table tr:nth-child(3) td:nth-child(2) {
+  padding-left: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.gambar-kursi > table tr:nth-child(4) td:nth-child(2) {
+  padding-left: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.gambar-kursi > table tr:nth-child(5) td:nth-child(3) {
+  padding-left: 26px;
+  height: 80px;
+  margin: 0;
+}
+
+.gambar-kursi > table tr:nth-child(5) td:nth-child(3) button {
+  background-color: #6a83a1;
+  color: rgb(255, 255, 255);
+  font-family: 'Montserrat';
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  /* box-shadow: 2px 2px 2px 2px grey; */
+  width: 150px;
+  height: 50px;
+  margin: 0;
+  transition: 0.4s;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2), 1px 5px 15px 1px rgba(0, 0, 0, 0.19);
+}
+
+.gambar-kursi > table tr:nth-child(5) td:nth-child(3) button:hover {
+  background-color: #b3b2b2;
+  color: rgb(0, 0, 0);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Montserrat';
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  transition: 0.4s;
+  transform: translateY(-4px);
+}
+
+.gambar-kursi > table tr:nth-child(5) td:nth-child(3) button:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.2s;
+}
+
+/* MAIN END */
