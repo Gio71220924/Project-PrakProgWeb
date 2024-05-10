@@ -16,6 +16,10 @@ body {
   font-weight: 600;
 }
 
+#logout{
+  color:#0094FF;
+}
+
 #keterangan-logo {
   font-weight: 500;
   font-style: italic;
