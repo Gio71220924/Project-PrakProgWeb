@@ -3,6 +3,10 @@ body {
   margin: 0px;
 }
 
+#username {
+  font-weight: bolder;
+}
+
 /* NAVBAR */
 .menu-navbar {
   font-family: 'Montserrat';
@@ -16,8 +20,8 @@ body {
   font-weight: 600;
 }
 
-#logout{
-  color:#0094FF;
+#logout {
+  color: #0094ff;
 }
 
 #keterangan-logo {
@@ -125,9 +129,14 @@ main .banner .tulisan {
   font-style: italic;
 }
 
-main .banner a .button {
+main#panjang {
+  width: 100px;
+}
+
+main .banner a {
   width: 110px;
   height: 30px;
+  display: inline-block;
   background-color: white;
   color: #50608e;
   text-align: center;
@@ -144,7 +153,7 @@ main .banner a {
   text-decoration: none;
 }
 
-main .banner a .button:hover {
+main .banner a:hover {
   /* background-color: #5bc0be; */
   background-image: linear-gradient(to bottom, #7386c0, #5bc0be);
   color: white;

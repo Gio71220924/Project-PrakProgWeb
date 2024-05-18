@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +13,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
     <title>Home G-VicxID</title>
+    <style>
+        <?php
+        include "home-page-style.css";
+        ?>
+    </style>
   </head>
   <body>
     <header>
@@ -49,10 +58,17 @@
             <h1>TICKET</h1>
           </div>
           <div class="deskripsi">
-            <p>Haloooo!! Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID.</p>
+            <p>Haloooo
+            <span id="username">
+              <?php
+                echo $_SESSION["username"];
+              ?>
+            </span>
+            !! Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID.</p>
           </div>
-          <a href="tiket-page.html">
-            <div class="button">Details</div>
+          <a href="tiket-page.html" id="panjang">
+            <!-- <div class="button">Details</div> -->
+            Details
           </a>
         </div>
         <div class="img">
