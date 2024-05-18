@@ -6,7 +6,7 @@
 body {
   height: 700pz;
   box-sizing: border-box;
-  background-color: #f7f6f6;
+  background-color: #acacac;
 }
 
 .container {
@@ -16,13 +16,15 @@ body {
   border: 4px solid #3f496c;
   margin: auto;
   margin-top: 125px;
+  margin-bottom: 125px;
   border-radius: 20px;
   display: flex;
+  box-shadow: 5px 5px grey;
 }
 
 .container .kiri {
   box-sizing: border-box;
-  width: 360px;
+  width: 400px;
   height: 705px;
   background-color: #3f496c;
   border-top-left-radius: 10px;
@@ -58,9 +60,9 @@ body {
 
 .container .kanan {
   width: 440px;
-  height: 700px;
+  height: 703px;
   background-color: white;
-  border-top-right-radius: 20px;
+  border-top-right-radius: 15px;
   border-bottom-right-radius: 20px;
   text-align: center;
   box-sizing: border-box;
@@ -90,7 +92,7 @@ body {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
-  top: 35px;
+  top: 25px;
 }
 
 .container .kanan .input {
@@ -98,7 +100,7 @@ body {
   top: 40px;
   margin: auto;
   width: 350px;
-  height: 250px;
+  height: 470px;
   border: 2px solid #3f496c;
   text-align: left;
   border-radius: 5px;
@@ -110,7 +112,7 @@ body {
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
-  top: 20px;
+  top: 140px;
   left: 20px;
 }
 
@@ -118,7 +120,7 @@ body {
   width: 300px;
   height: 20px;
   position: relative;
-  top: 40px;
+  top: 160px;
   left: 20px;
   background-color: #f7f6f6;
   border: 1px solid #f7f6f6;
@@ -129,7 +131,58 @@ body {
   outline: none;
 }
 
-.container .kanan .input label.password {
+/* nama */
+.container .kanan .input label.namaLengkap {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+.container .kanan .input input.namaLengkapid {
+  width: 300px;
+  height: 20px;
+  position: relative;
+  top: 40px;
+  left: 20px;
+  background-color: #f7f6f6;
+  border: 1px solid #f7f6f6;
+  border-bottom: 2px solid #3f496c;
+}
+
+.container .kanan .input input.namaLengkapid:focus {
+  outline: none;
+}
+/* nama ends */
+
+/* no hp */
+.container .kanan .input label.nomorHp {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  top: 60px;
+  left: 20px;
+}
+
+.container .kanan .input input.nomorHpid {
+  width: 300px;
+  height: 20px;
+  position: relative;
+  top: 80px;
+  left: 20px;
+  background-color: #f7f6f6;
+  border: 1px solid #f7f6f6;
+  border-bottom: 2px solid #3f496c;
+}
+
+.container .kanan .input input.nomorHpid:focus {
+  outline: none;
+}
+/* no hp end */
+
+/* email */
+.container .kanan .input label.email {
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -137,7 +190,7 @@ body {
   left: 20px;
 }
 
-.container .kanan .input input.passid {
+.container .kanan .input input.emailid {
   width: 300px;
   height: 20px;
   position: relative;
@@ -148,21 +201,71 @@ body {
   border-bottom: 2px solid #3f496c;
 }
 
+.container .kanan .input input.userid:focus {
+  outline: none;
+}
+/* email end */
+
+.container .kanan .input label.password {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  top: 180px;
+  left: 20px;
+}
+
+.container .kanan .input input.passid {
+  width: 300px;
+  height: 20px;
+  position: relative;
+  top: 200px;
+  left: 20px;
+  background-color: #f7f6f6;
+  border: 1px solid #f7f6f6;
+  border-bottom: 2px solid #3f496c;
+}
+
 .container .kanan .input input.passid:focus {
   outline: none;
 }
 
-button.log {
+.tombol {
+  margin-top: 70px;
+  padding-left: 26%;
+}
+
+button.daftar {
   background-color: #3f496c;
-  position: relative;
+  float: left;
+  margin-left: 10px;
   top: 55px;
   color: white;
-  width: 200px;
+  width: 104px;
+  height: 34px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 30px;
+  border: 2px solid #3f496c;
+}
+
+a.batal {
+  background-color: #ffffff;
+  float: left;
+  top: 55px;
+  color: #3f496c;
+  width: 100px;
   height: 30px;
   font-size: 15px;
   text-align: center;
   border-radius: 30px;
-  border: 1px solid #3f496c;
+  border: 2px solid #3f496c;
+  text-decoration: none;
+}
+
+a.batal p {
+  margin-top: 6%;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 p.regis {
