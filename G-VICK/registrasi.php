@@ -40,7 +40,7 @@
             <input type="password" name="password" id="password" class="passid" placeholder="masukkan password anda" required/><br />
           </div>
           <div class="tombol">
-            <a href="home-page.html" class="batal">
+            <a href="home-page.php" class="batal">
               <p>Batal</p>
             </a>
             <button type="submit" class="daftar" name="daftar">Daftar</button>
@@ -59,7 +59,7 @@
 
             $query = "INSERT INTO `user` (`id_user`, `nama_lengkap`, `username`, `password`, `email`, `noHp`) VALUES (NULL, '$nama', '$username', '$password', '$email', '$nohp');";
             if (mysqli_query($koneksi, $query)) {
-              echo '<script>alert("Registrasi berhasil! Silahkan login!");window.location.href="home-page.html"</script>';
+              echo '<script>alert("Registrasi berhasil! Silahkan login!");window.location.href="home-page.php"</script>';
             } else {
               echo '<p id="notif">Registrasi gagal<p>';
             }

@@ -7,6 +7,16 @@ body {
   font-weight: bolder;
 }
 
+#regis {
+  all: unset;
+  color: #0094ff;
+  text-decoration: underline;
+}
+
+#regis:hover {
+  cursor: pointer;
+}
+
 /* NAVBAR */
 .menu-navbar {
   font-family: 'Montserrat';
@@ -22,6 +32,10 @@ body {
 
 #logout {
   color: #0094ff;
+}
+
+#logout:hover {
+  cursor: pointer;
 }
 
 #keterangan-logo {

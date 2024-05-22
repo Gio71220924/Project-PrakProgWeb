@@ -40,10 +40,16 @@ session_start();
         <!-- Icon end -->
         <!-- Menu -->
         <div class="menu">
-          <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
-          <a href="my-ticket.html" class="menu-navbar">TIKETKU</a>
-          <a href="tiket-page.html" class="menu-navbar">TIKET</a>
-          <a href="home-page.html" class="menu-navbar">HOME</a>
+          <?php
+            if (isset($_SESSION["username"])) {
+              echo '<lo href="#" class="menu-navbar" id="logout" onclick="logout()">LOGOUT</lo>';
+            } else {
+              echo '<lo href="#" class="menu-navbar" id="logout" onclick="login()">LOGIN</lo>';
+            }
+          ?>
+          <a href="my-ticket.php" class="menu-navbar">TIKETKU</a>
+          <a href="tiket-page.php" class="menu-navbar">TIKET</a>
+          <a href="home-page.php" class="menu-navbar">HOME</a>
         </div>
         <!-- Menu end -->
       </nav>
@@ -61,12 +67,21 @@ session_start();
             <p>Haloooo
             <span id="username">
               <?php
-                echo $_SESSION["username"];
+                if (isset($_SESSION["username"])) {
+                  echo $_SESSION["username"];
+                }
               ?>
             </span>
-            !! Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID.</p>
+            !!  Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID. <span>
+              <?php
+                if (!isset($_SESSION["username"])) {
+                  echo 'Silahkan login untuk mengakses fitur-fitur yang ada. Silahkan';
+                  echo '<a href="registrasi.php" id="regis"> registrasi di sini</a> jika belum memiliki akun :D';
+                }
+              ?>
+            </span></p>
           </div>
-          <a href="tiket-page.html" id="panjang">
+          <a href="tiket-page.php" id="panjang">
             <!-- <div class="button">Details</div> -->
             Details
           </a>
@@ -79,7 +94,7 @@ session_start();
         <div class="header"><h3>HOT</h3></div>
         <div class="content">
           <div class="card">
-            <a href="detail-page.html">
+            <a href="detail-page.php">
               <div class="img"><img src="images/boboiboy.jpg" alt="" /></div>
               <div class="deskripsi">
                 <div class="title">
@@ -87,7 +102,7 @@ session_start();
                   <h4>GBK, Jakarta</h4>
                 </div>
                 <div class="div-check">
-                  <a href="detail-page.html" class="click">
+                  <a href="detail-page.php" class="click">
                     <div class="button">Check</div>
                   </a>
                 </div>
@@ -205,6 +220,18 @@ session_start();
       <div class="copyright">
         <p>@COPYRIGHT 2024 VVG</p>
       </div>
-    </footer>
+   ter>
   </body>
+  <script>
+    function logout() {
+      var keluar = window.confirm("Apakah anda yakin ingin logout?");
+      if (keluar) {
+        window.location='hapusSession.php';
+      }
+    }
+    
+    function login() {
+      window.location='login.php';
+    }
+  </script>
 </html>
