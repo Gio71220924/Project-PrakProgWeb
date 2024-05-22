@@ -1,13 +1,37 @@
 <?php
+require 'koneksi.php';
 session_start();
-if (!isset($_SESSION["username"])) {
-  echo '<script>var x = window.confirm("Anda harus login terlebih dahulu!");
-  if (x) {
-    location.replace("login.php");
-  } else {
-    location.replace("home-page.php");
-  }</script>';
+
+$query = "SELECT * FROM data_konser";
+$result = mysqli_query($koneksi, $query);
+$data = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $data[] = $row;
 }
+
+if (isset($_POST["cari"])) {
+  $key = $_POST["keyword"];
+  $query = "SELECT * FROM data_konser WHERE 
+            nama_konser LIKE '%$key%' OR 
+            artis_konser LIKE '%$key%' OR
+            premium LIKE '%$key%' OR
+            vvip LIKE '%$key%' OR
+            vip LIKE '%$key%' OR
+            reguler LIKE '%$key%' OR
+            lokasi_konser LIKE '%$key%'";
+  $result = mysqli_query($koneksi, $query);
+  $data = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+      $data[] = $row;
+  }
+
+}
+
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +48,9 @@ if (!isset($_SESSION["username"])) {
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Tiket G-VicxID</title>
+    <style>
+      <?php include 'ticket-page-style.css' ?>
+    </style>
   </head>
   <body>
     <header>
@@ -46,10 +73,10 @@ if (!isset($_SESSION["username"])) {
         <!-- Icon end -->
         <!-- Menu -->
         <div class="menu">
-          <a href="#" class="menu-navbar" id="logout" onclick="logout()">LOGOUT</a>
-          <a href="my-ticket.php" class="menu-navbar">MY TICKET</a>
-          <a href="tiket-page.php" class="menu-navbar">TIKET</a>
-          <a href="home-page.php" class="menu-navbar">HOME</a> 
+          <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
+          <a href="my-ticket.html" class="menu-navbar">MY TICKET</a>
+          <a href="tiket-page.html" class="menu-navbar">TIKET</a>
+          <a href="home-page.html" class="menu-navbar">HOME</a> 
         </div>
         <!-- Menu end -->
       </nav>
@@ -63,142 +90,39 @@ if (!isset($_SESSION["username"])) {
             </div>
             <div class="search">
                 <select name="sort" class="select">
-                  <option value="">---Sort By--</option>
-                  <option value="genre"> Genre</option>
-                  <option value="Kategori">Kategori</option>
-                  <option value="asc">A - Z</option>
-                  <option value="desc">Z - A</option>
+                  <option value="" selected>---Sort By--</option>
+                  <option value="">Default</option>
+                  <option value=""> Harga</option>
+                  <option value="">Z - A</option>
                 </select>
-                <input type="text" class="input" placeholder="Search...." autofocus>
-                <input type="button" value="Search" class="search-button" >
+                <form action="" method="post">
+                  <input type="text" name="keyword" class="input" placeholder="Search...." autofocus >
+                  <input type="submit" value="Search" class="search-button" name="cari">
+                </form>
             </div>
         </div>
         <hr class="garis">
         <div class="daftar">
+          <?php foreach ($data as $dt) { ?>
             <div class="card">
-              <a href="detail-page.php">
-                <div class="lokasi">GBK, Jakarta</div>
-                <div class="img"><img src="images/tiket1.jpg" alt=""></div>
-                <div class="deskripsi">
-                    <h4>Avenged Sevenfold</h4>
-                    <h4>-A7X-</h4>
-                </div>
-                <div class="price">
-                    <div class="icon"><span class="material-symbols-outlined">
-                        event
-                    </span>25 - 5 - 2024</div>
-                    <div class="harga">IDR 2.300.000</div>
-                </div>
-                <a href="detail-page.php"><div class="pesan"> Buy </div></a>
-              </a>
-            </div>
-            <div class="card">
-              <a href="detail-page1.html">
-                <div class="lokasi">Pantai Lagoon, Ancol  </div>
-                <div class="img"><img src="images/tiket2.jpg" alt=""></div>
-                <div class="deskripsi">
-                    <h4>Festival Kemenangan</h4>
-                    <h4>-Vierratale-</h4>
-                </div>
-                <div class="price">
-                    <div class="icon"><span class="material-symbols-outlined">
-                        event
-                        </span>14 - 4 - 2024</div>
-                    <div class="harga">IDR 30.000</div>
-                </div>
-                <a href="detail-page1.html"><div class="pesan"> Buy </div></a>
-              </a>
-            </div>
-            <div class="card">
-                <div class="lokasi">GBK, Jakarta</div>
-                <div class="img"><img src="images/tiket3.jpg" alt=""></div>
-                <div class="deskripsi">
-                    <h4>TREASURE REBOOT</h4>
-                    <h4>-TREASURE-</h4>
-                </div>
-                <div class="price">
-                    <div class="icon"><span class="material-symbols-outlined">
-                        event
-                        </span>29 - 6 - 2024</div>
-                    <div class="harga">IDR 500.000</div>
-                </div>
-                <a href="#"><div class="pesan"> Buy </div></a>
-            </div>
-            <div class="card">
-                <div class="lokasi">GOR UNY, Yogyakarta</div>
-                <div class="img"><img src="images/tiket4.jpg" alt=""></div>
-                <div class="deskripsi">
-                    <h4>DEFRAG</h4>
-                    <h4>-HINDIA-</h4>
-                </div>
-                <div class="price">
-                    <div class="icon"><span class="material-symbols-outlined">
-                        event
-                        </span>21 - 4 - 2024</div>
-                    <div class="harga">IDR 175.000</div>
-                </div>
-                <a href="#"><div class="pesan"> Buy </div></a>
-            </div>
-            <div class="card">
-                <div class="lokasi">Kemayoran, Jakarta</div>
-                <div class="img"><img src="images/tiket5.jpg" alt=""></div>
-                <div class="deskripsi">
-                    <h4>Java Jazz Festival</h4>
-                    <h4>-</h4>
-                </div>
-                <div class="price">
-                    <div class="icon"><span class="material-symbols-outlined">
-                        event
-                        </span>24 - 5 - 2024</div>
-                    <div class="harga">IDR 850.000</div>
-                </div>
-                <a href="#"><div class="pesan"> Buy </div></a>
-            </div>
-            <div class="card">
-                <div class="lokasi">Carnaval Ancol, Jakarta</div>
-                <div class="img"><img src="images/tiket6.jpg" alt=""></div>
-                <div class="deskripsi">
-                    <h4>Lamb of God</h4>
-                    <h4>-Hammersonic-</h4>
-                </div>
-                <div class="price">
-                    <div class="icon"><span class="material-symbols-outlined">
-                        event
-                        </span>4 - 5 - 2024</div>
-                    <div class="harga">IDR 500.000</div>
-                </div>
-                <a href="#"><div class="pesan"> Buy </div></a>
-            </div>
-            <div class="card">
-                <div class="lokasi">Bengkel Space, Jakarta</div>
-                <div class="img"><img src="images/tiket7.jpg" alt=""></div>
-                <div class="deskripsi">
-                    <h4>The Drums Asia Tour</h4>
-                    <h4>-The Drums-</h4>
-                </div>
-                <div class="price">
-                    <div class="icon"><span class="material-symbols-outlined">
-                        event 
-                        </span>9 - 5 - 2024</div>
-                    <div class="harga">IDR 500.000</div>
-                </div>
-                <a href="#"><div class="pesan"> Buy </div></a>
-            </div>
-            <div class="card">
-              <div class="lokasi">Ancol Beach, Jakarta</div>
-              <div class="img"><img src="images/tiket8.jpg" alt=""></div>
+              <div class="lokasi"><?php echo $dt["lokasi_konser"] ?></div>
+              <div class="img"><img src="images/<?php echo $dt["gambar_konser"] ?>" alt=""></div>
               <div class="deskripsi">
-                  <h4>Niall Horan</h4>
-                  <h4>-Niall Horan-</h4>
+                  <h4 class="namakonser"><?php echo $dt["nama_konser"] ?></h4>
+                  <h4 class="artis">-<?php echo $dt["artis_konser"] ?>-</h4>
               </div>
               <div class="price">
                   <div class="icon"><span class="material-symbols-outlined">
                       event 
-                      </span>11 - 5 - 2024</div>
-                  <div class="harga">IDR 1.200.000</div>
-              </div>
-              <a href="#"><div class="pesan"> Buy </div></a>
+                      </span><?php echo $dt["tgl_konser"] ?>
+                  </div>
+                  <div class="harbut">
+                    <div class="harga">IDR <?php echo $dt["reguler"] ?></div>
+                    <a href="#"><div class="pesan"> BELI </div></a>
+                  </div>
+                </div>
           </div>
+          <?php } ?>
         </div>
     </main>
     <footer>
@@ -266,14 +190,6 @@ if (!isset($_SESSION["username"])) {
         </div>
     </footer>
   </body>
-  <script>
-    function logout() {
-      var keluar = window.confirm("Apakah anda yakin ingin logout?");
-      if (keluar) {
-        window.location='hapusSession.php';
-      }
-    }
-  </script>
 </html>
 
 </body>

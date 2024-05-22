@@ -1,5 +1,14 @@
 <?php
+require 'koneksi.php';
 session_start();
+
+$query = "SELECT * FROM data_konser LIMIT 4";
+$result = mysqli_query($koneksi, $query);
+$data = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $data[] = $row;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -40,16 +49,10 @@ session_start();
         <!-- Icon end -->
         <!-- Menu -->
         <div class="menu">
-          <?php
-            if (isset($_SESSION["username"])) {
-              echo '<lo href="#" class="menu-navbar" id="logout" onclick="logout()">LOGOUT</lo>';
-            } else {
-              echo '<lo href="#" class="menu-navbar" id="logout" onclick="login()">LOGIN</lo>';
-            }
-          ?>
-          <a href="my-ticket.php" class="menu-navbar">TIKETKU</a>
-          <a href="tiket-page.php" class="menu-navbar">TIKET</a>
-          <a href="home-page.php" class="menu-navbar">HOME</a>
+          <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
+          <a href="my-ticket.html" class="menu-navbar">TIKETKU</a>
+          <a href="tiket-page.html" class="menu-navbar">TIKET</a>
+          <a href="home-page.html" class="menu-navbar">HOME</a>
         </div>
         <!-- Menu end -->
       </nav>
@@ -67,21 +70,12 @@ session_start();
             <p>Haloooo
             <span id="username">
               <?php
-                if (isset($_SESSION["username"])) {
-                  echo $_SESSION["username"];
-                }
+                echo $_SESSION["username"];
               ?>
             </span>
-            !!  Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID. <span>
-              <?php
-                if (!isset($_SESSION["username"])) {
-                  echo 'Silahkan login untuk mengakses fitur-fitur yang ada. Silahkan';
-                  echo '<a href="registrasi.php" id="regis"> registrasi di sini</a> jika belum memiliki akun :D';
-                }
-              ?>
-            </span></p>
+            !! Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID.</p>
           </div>
-          <a href="tiket-page.php" id="panjang">
+          <a href="tiket-page.html" id="panjang">
             <!-- <div class="button">Details</div> -->
             Details
           </a>
@@ -90,47 +84,17 @@ session_start();
           <img src="images/conser.jpg" alt="Konser" />
         </div>
       </div>
+
       <div class="ticket">
         <div class="header"><h3>HOT</h3></div>
         <div class="content">
-          <div class="card">
-            <a href="detail-page.php">
-              <div class="img"><img src="images/boboiboy.jpg" alt="" /></div>
-              <div class="deskripsi">
-                <div class="title">
-                  <h4>Avenged Sevenfold</h4>
-                  <h4>GBK, Jakarta</h4>
-                </div>
-                <div class="div-check">
-                  <a href="detail-page.php" class="click">
-                    <div class="button">Check</div>
-                  </a>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="card">
-            <a href="detail-page1.html">
-              <div class="img"><img src="images/ultraman.jpg" alt="" /></div>
-              <div class="deskripsi">
-                <div class="title">
-                  <h4>Festival Raya Kemenangan</h4>
-                  <h4>Ancol, Jakarta</h4>
-                </div>
-                <div class="div-check">
-                  <a href="detail-page1.html" class="click">
-                    <div class="button">Check</div>
-                  </a>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="card">
-            <div class="img"><img src="images/ultraman1.jpg" alt="" /></div>
+          <?php foreach($data as $dt) { ?>
+            <div class="card">
+            <div class="img"><img src="images/<?php echo $dt["gambar_konser"]; ?>" alt=""></div>
             <div class="deskripsi">
               <div class="title">
-                <h4>TREASURE</h4>
-                <h4>GBK, Jakarta</h4>
+                <h4><?php echo $dt["artis_konser"]; ?></h4>
+                <h4><?php echo $dt["lokasi_konser"]; ?></h4>
               </div>
               <div class="div-check">
                 <a href="#" class="click">
@@ -139,20 +103,7 @@ session_start();
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="img"><img src="images/boboiboy2.jpg" alt="" /></div>
-            <div class="deskripsi">
-              <div class="title">
-                <h4>DEFRAG</h4>
-                <h4>GOR UNY, Yogyakarta</h4>
-              </div>
-              <div class="div-check">
-                <a href="#" class="click">
-                  <div class="button">Check</div>
-                </a>
-              </div>
-            </div>
-          </div>
+          <?php } ?>
         </div>
       </div>
     </main>
@@ -220,18 +171,6 @@ session_start();
       <div class="copyright">
         <p>@COPYRIGHT 2024 VVG</p>
       </div>
-   ter>
+    </footer>
   </body>
-  <script>
-    function logout() {
-      var keluar = window.confirm("Apakah anda yakin ingin logout?");
-      if (keluar) {
-        window.location='hapusSession.php';
-      }
-    }
-    
-    function login() {
-      window.location='login.php';
-    }
-  </script>
 </html>
