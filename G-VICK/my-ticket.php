@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+  echo '<script>var x = window.confirm("Anda harus login terlebih dahulu!");
+  if (x) {
+    location.replace("login.php");
+  } else {
+    location.replace("home-page.php");
+  }</script>';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
