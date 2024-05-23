@@ -70,9 +70,16 @@ if (isset($_POST["cari"])) {
         <!-- Icon end -->
         <!-- Menu -->
         <div class="menu">
-          <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
+        <?php
+                if (isset($_SESSION["username"])) {
+                  echo '<lo href="#" class="menu-navbar" id="logout" onclick="logout()">LOGOUT</lo>';
+                } else {
+                  echo '<lo href="#" class="menu-navbar" id="logout" onclick="login()">LOGIN</lo>';
+                }
+            ?>
+          <!-- <a href="#" class="menu-navbar" id="logout">LOGOUT</a> -->
           <a href="my-ticket.php" class="menu-navbar">MY TICKET</a>
-          <a href="tiket-page.phpl" class="menu-navbar">TIKET</a>
+          <a href="tiket-page.php" class="menu-navbar">TIKET</a>
           <a href="home-page.php" class="menu-navbar">HOME</a> 
         </div>
         <!-- Menu end -->
@@ -188,12 +195,12 @@ if (isset($_POST["cari"])) {
     </footer>
   </body>
     <script>
-    function logout() {
-      var keluar = window.confirm("Apakah anda yakin ingin logout?");
-      if (keluar) {
-        window.location='hapusSession.php';
+      function logout() {
+        var keluar = window.confirm("Apakah anda yakin ingin logout?");
+        if (keluar) {
+          window.location='hapusSession.php';
+        }
       }
-    }
   </script>
 </html>
 </body>

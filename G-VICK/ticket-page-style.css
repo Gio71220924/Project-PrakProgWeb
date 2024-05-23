@@ -45,6 +45,10 @@ body {
   color: #b5b5b5;
 }
 
+#logout:hover {
+  cursor: pointer;
+  color:#0094ff;
+}
 .navbar {
   padding: 10px;
   height: 40px;

@@ -56,7 +56,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                   echo '<lo href="#" class="menu-navbar" id="logout" onclick="login()">LOGIN</lo>';
                 }
             ?>
-          <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
+          <!-- <a href="#" class="menu-navbar" id="logout">LOGOUT</a> -->
           <a href="my-ticket.php" class="menu-navbar">TIKETKU</a>
           <a href="tiket-page.php" class="menu-navbar">TIKET</a>
           <a href="home-page.php" class="menu-navbar">HOME</a>
