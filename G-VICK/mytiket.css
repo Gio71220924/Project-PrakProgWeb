@@ -1,0 +1,348 @@
+body {
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  #username {
+    font-weight: bolder;
+  }
+  
+  #regis {
+    all: unset;
+    color: #0094ff;
+    text-decoration: underline;
+  }
+  
+  #regis:hover {
+    cursor: pointer;
+  }
+
+/* NAVBAR */
+.menu-navbar {
+    font-family: 'Montserrat';
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 12px;
+    float: right;
+    margin-top: 13px;
+    margin-right: 30px;
+    padding: 0px;
+    font-weight: 600;
+  }
+  
+  /* #logout {
+    color: #0094ff;
+  } */
+  
+  #logout:hover {
+    cursor: pointer;
+    color:#0094ff;
+  }
+  
+  #keterangan-logo {
+    font-weight: 500;
+    font-style: italic;
+    font-family: 'Inter';
+    font-size: small;
+  }
+  
+  #nama-web {
+    font-weight: 1500;
+    font-size: larger;
+    font-family: 'Inter';
+  }
+  
+  .menu a:link {
+    color: rgb(255, 255, 255);
+  }
+  
+  .menu a:visited {
+    color: rgb(255, 255, 255);
+  }
+  
+  .menu a:hover {
+    color: #b5b5b5;
+  }
+  
+  .menu a:nth-child(2) {
+    color: #b5b5b5;
+  }
+  
+  .navbar {
+    padding: 10px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 30px;
+  }
+  
+  .logo {
+    width: 50px;
+  }
+  
+  .icon-name > table {
+    border-collapse: collapse;
+    padding: 0px;
+  }
+  
+  .icon-name {
+    margin-top: -7px;
+  }
+  
+  .navbar table tr td {
+    color: white;
+    vertical-align: top;
+  }
+  
+  .navbar table tr:nth-child(2) > td {
+    vertical-align: bottom;
+  }
+  
+  .navbar table tr:nth-child(3) > td {
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  
+  .navbar table tr td > img {
+    margin: 1px;
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+  
+  header {
+    background-color: #3f496c;
+    margin: 0px;
+    position: sticky;
+    top: 0px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  /* NAVBAR END */
+
+  /* main */
+
+
+
+
+  /* mainend */
+
+
+
+
+
+  footer {
+    clear: both;
+    background-color: #1c2541;
+    height: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+  .keterangan-footer {
+    border-right: 1px solid #a4a4a4;
+    width: 23%;
+    height: 95%;
+    margin: 5px;
+    float: left;
+    color: white;
+    padding-right: 5px;
+    padding-left: 10px;
+  }
+  
+  .keterangan-footer h1 {
+    color: #e2e2e2;
+    font-size: 20px;
+    font-family: 'Montserrat';
+    font-weight: 150px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+  }
+  
+  .keterangan-footer p {
+    color: #e2e2e2;
+    font-size: 12px;
+    font-family: 'Montserrat';
+    margin: 0;
+  }
+  
+  .kontak {
+    width: 15%;
+    height: 95%;
+    margin: 5px;
+    float: left;
+    margin-right: 3%;
+    margin-left: 4%;
+  }
+  
+  .kontak h1 {
+    color: #e2e2e2;
+    margin: 0;
+    font-size: 25px;
+    font-family: 'Montserrat';
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .informasi {
+    /* border-right: 1px solid white; */
+    width: 15%;
+    height: 95%;
+    margin: 5px;
+    float: left;
+    margin-right: 8%;
+    margin-left: 4%;
+  }
+  
+  .informasi h1 {
+    color: #e2e2e2;
+    margin: 0;
+    font-size: 25px;
+    font-family: 'Montserrat';
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .bantu {
+    color: #e2e2e2;
+  }
+  
+  .username {
+    color: #e2e2e2;
+  }
+  
+  .contact-us {
+    border-left: 1px solid rgb(152, 152, 152);
+    width: 25%;
+    height: 95%;
+    margin: 5px;
+    margin-left: 50px;
+    margin: auto;
+    /* padding-left: 10p; */
+    /* margin-right: 10px; */
+    float: left;
+  }
+  
+  .contact-us h1 {
+    color: #e2e2e2;
+    margin: 0;
+    font-size: 25px;
+    font-family: 'Montserrat';
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 5px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+  }
+  
+  .copyright p {
+    background-color: #1c2541;
+    clear: both;
+    letter-spacing: 5px;
+    text-align: center;
+    color: rgb(202, 202, 202);
+    padding: 7px;
+    margin: 0px;
+    font-family: 'Montserrat';
+  }
+  
+  .kontak1 {
+    color: #e2e2e2;
+    padding-left: 15px;
+  }
+  
+  .table-kontak {
+    font-size: medium;
+    font-weight: lighter;
+    padding-left: 10px;
+  }
+  
+  .email {
+    color: #e2e2e2;
+    padding-bottom: 7px;
+    padding-right: 50px;
+  }
+  
+  .gambaremail {
+    padding-left: 10px;
+  }
+  
+  .gambartelpon {
+    padding-left: 10px;
+  }
+  
+  .notel {
+    color: #e2e2e2;
+    padding-top: 8px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .ig {
+    color: #e2e2e2;
+    bottom: 15px;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+  
+  .ig img {
+    margin-top: 0;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .syarat {
+    color: #e2e2e2;
+    padding-left: 50px;
+    padding-bottom: 7px;
+  }
+  
+  .faq {
+    color: #e2e2e2;
+    padding-left: 50px;
+    padding-bottom: 7px;
+  }
+  
+  .bayar {
+    color: #e2e2e2;
+    padding-left: 50px;
+    padding-bottom: 7px;
+  }
+  
+  .bantu {
+    padding-left: 50px;
+    padding-bottom: 7x;
+  }
+  
+  .form {
+    padding-left: 16%;
+    padding-top: 10px;
+  }
+  
+  .submit {
+    color: rgb(253, 253, 253);
+    background-color: #627a91;
+    box-shadow: 2px 2px 2px 2px rgb(240, 238, 238);
+    border-radius: 10px;
+    box-shadow: 1px 1px rgb(73, 73, 73);
+    float: right;
+    margin-right: 17%;
+    border: none;
+    transition: 0.5s;
+  }
+  
+  .submit:hover {
+    background-color: #d4d4d4;
+    color: black;
+    cursor: pointer;
+    transition: 0.5s;
+  }
