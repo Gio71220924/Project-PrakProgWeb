@@ -29,9 +29,6 @@ if (isset($_POST["cari"])) {
 
 
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -190,7 +187,14 @@ if (isset($_POST["cari"])) {
         </div>
     </footer>
   </body>
+    <script>
+    function logout() {
+      var keluar = window.confirm("Apakah anda yakin ingin logout?");
+      if (keluar) {
+        window.location='hapusSession.php';
+      }
+    }
+  </script>
 </html>
-
 </body>
 </html>
