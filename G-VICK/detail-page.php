@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+  echo '<script>var x = window.confirm("Anda harus login terlebih dahulu!");
+  if (x) {
+    location.replace("login.php");
+  } else {
+    location.replace("home-page.php");
+  }</script>';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +41,7 @@
         <!-- Icon end -->
         <!-- Menu -->
         <div class="menu">
-          <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
+          <a href="#" class="menu-navbar" id="logout" onclick="logout()">LOGOUT</a>
           <a href="my-ticket.html" class="menu-navbar">TIKETKU</a>
           <a href="tiket-page.html" class="menu-navbar">TIKET</a>
           <a href="home-page.html" class="menu-navbar">HOME</a>
@@ -247,4 +259,12 @@
       </div>
     </footer>
   </body>
+  <script>
+    function logout() {
+      var keluar = window.confirm("Apakah anda yakin ingin logout?");
+      if (keluar) {
+        window.location='hapusSession.php';
+      }
+    }
+  </script>
 </html>
