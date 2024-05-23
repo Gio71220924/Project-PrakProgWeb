@@ -58,8 +58,8 @@ while ($row = mysqli_fetch_assoc($result)) {
             ?>
           <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
           <a href="my-ticket.html" class="menu-navbar">TIKETKU</a>
-          <a href="tiket-page.html" class="menu-navbar">TIKET</a>
-          <a href="home-page.html" class="menu-navbar">HOME</a>
+          <a href="tiket-page.php" class="menu-navbar">TIKET</a>
+          <a href="home-page.php" class="menu-navbar">HOME</a>
         </div>
         <!-- Menu end -->
       </nav>
@@ -91,7 +91,7 @@ while ($row = mysqli_fetch_assoc($result)) {
               ?>
             </span></p>
           </div>
-          <a href="tiket-page.html" id="panjang">
+          <a href="tiket-page.php" id="panjang">
             <!-- <div class="button">Details</div> -->
             Details
           </a>

@@ -72,8 +72,8 @@ if (isset($_POST["cari"])) {
         <div class="menu">
           <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
           <a href="my-ticket.html" class="menu-navbar">MY TICKET</a>
-          <a href="tiket-page.html" class="menu-navbar">TIKET</a>
-          <a href="home-page.html" class="menu-navbar">HOME</a> 
+          <a href="tiket-page.phpl" class="menu-navbar">TIKET</a>
+          <a href="home-page.php" class="menu-navbar">HOME</a> 
         </div>
         <!-- Menu end -->
       </nav>
