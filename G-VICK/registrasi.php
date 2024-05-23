@@ -40,7 +40,7 @@
             <input type="password" name="password" id="password" class="passid" placeholder="masukkan password anda" required/><br />
           </div>
           <div class="tombol">
-            <a href="home-page.html" class="batal">
+            <a href="home-page.php" class="batal">
               <p>Batal</p>
             </a>
             <button type="submit" class="daftar" name="daftar">Daftar</button>
