@@ -42,7 +42,7 @@ if (!isset($_SESSION["username"])) {
         <!-- Menu -->
         <div class="menu">
           <a href="#" class="menu-navbar" id="logout" onclick="logout()">LOGOUT</a>
-          <a href="my-ticket.html" class="menu-navbar">TIKETKU</a>
+          <a href="my-ticket.php" class="menu-navbar">TIKETKU</a>
           <a href="tiket-page.html" class="menu-navbar">TIKET</a>
           <a href="home-page.php" class="menu-navbar">HOME</a>
         </div>
