@@ -49,6 +49,13 @@ while ($row = mysqli_fetch_assoc($result)) {
         <!-- Icon end -->
         <!-- Menu -->
         <div class="menu">
+            <?php
+                if (isset($_SESSION["username"])) {
+                  echo '<lo href="#" class="menu-navbar" id="logout" onclick="logout()">LOGOUT</lo>';
+                } else {
+                  echo '<lo href="#" class="menu-navbar" id="logout" onclick="login()">LOGIN</lo>';
+                }
+            ?>
           <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
           <a href="my-ticket.html" class="menu-navbar">TIKETKU</a>
           <a href="tiket-page.html" class="menu-navbar">TIKET</a>
@@ -70,10 +77,19 @@ while ($row = mysqli_fetch_assoc($result)) {
             <p>Haloooo
             <span id="username">
               <?php
-                echo $_SESSION["username"];
+                if (isset($_SESSION["username"])) {
+                  echo $_SESSION["username"];
+                }
               ?>
             </span>
-            !! Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID.</p>
+            !!  Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID. <span>
+              <?php
+                if (!isset($_SESSION["username"])) {
+                  echo 'Silahkan login untuk mengakses fitur-fitur yang ada. Silahkan';
+                  echo '<a href="registrasi.php" id="regis"> registrasi di sini</a> jika belum memiliki akun :D';
+                }
+              ?>
+            </span></p>
           </div>
           <a href="tiket-page.html" id="panjang">
             <!-- <div class="button">Details</div> -->
@@ -173,4 +189,16 @@ while ($row = mysqli_fetch_assoc($result)) {
       </div>
     </footer>
   </body>
+    <script>
+    function logout() {
+      var keluar = window.confirm("Apakah anda yakin ingin logout?");
+      if (keluar) {
+        window.location='hapusSession.php';
+      }
+    }
+    
+    function login() {
+      window.location='login.php';
+    }
+  </script>
 </html>
