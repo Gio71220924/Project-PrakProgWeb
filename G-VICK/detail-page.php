@@ -1,4 +1,5 @@
 <?php
+require 'koneksi.php';
 session_start();
 if (!isset($_SESSION["username"])) {
   echo '<script>var x = window.confirm("Anda harus login terlebih dahulu!");
@@ -8,6 +9,14 @@ if (!isset($_SESSION["username"])) {
     location.replace("home-page.php");
   }</script>';
 }
+
+$id = $_GET["id_konser"];
+
+$query = "SELECT * FROM data_konser WHERE id_konser = $id";
+$result = mysqli_query($koneksi,$query);
+$hasil = mysqli_fetch_assoc($result);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -60,23 +69,23 @@ if (!isset($_SESSION["username"])) {
           <h1>DETAIL TIKET</h1>
           <div class="breadcrums">
             <ul>
-              <li><a href="tiket-page.html">Tiket</a></li>
+              <li><a href="tiket-page.php">Tiket</a></li>
               <li><a href="#"></a><span>&#11166;</span></li>
-              <li><a href="detail-page.html">Detail </a></li>
+              <li><a href="detail-page.php">Detail </a></li>
               <!-- &#11208; -->
             </ul>
           </div>
         </div>
         <hr />
         <div class="gambar-konser-detail">
-          <img src="images/gambar-detail.jpg" alt="" />
+          <img src="images/<?php echo $hasil["gambar_konser"]; ?>" alt="" />
         </div>
         <div class="detail-kotak">
           <table>
             <tr>
               <td colspan="2">
-                <p class="judul-detail">This is Avenged Sevenfold</p>
-                <p class="penyanyi-detail">Avenged Sevenfold</p>
+                <p class="judul-detail"><?php echo $hasil["nama_konser"]; ?></p>
+                <p class="penyanyi-detail"><?php echo $hasil["artis_konser"] ?></p>
               </td>
             </tr>
             <tr>
@@ -89,8 +98,7 @@ if (!isset($_SESSION["username"])) {
                     <tr>
                       <td>
                         <p>
-                          Avenged Sevenfold (disingkat A7X) adalah band heavy metal Amerika Serikat dari Huntington Beach, California, dibentuk pada tahun 1999. Band ini saat ini formasi terdiri dari vokalis M. Shadows, gitaris ritme Zacky
-                          Vengeance, gitaris utama Synyster Gates, bassis Johnny Christ, dan drummer Brooks Wackerman.
+                        <?php echo $hasil["detail_konser"] ?>
                         </p>
                       </td>
                     </tr>
@@ -102,15 +110,15 @@ if (!isset($_SESSION["username"])) {
                   <table>
                     <tr>
                       <td><img src="images/icon-lagu.png" alt="" /></td>
-                      <td>Heavy Metal Band</td>
+                      <td><?php echo $hasil["genre"] ?></td>
                     </tr>
                     <tr>
                       <td><img src="images/icon-lokasi.png" alt="" /></td>
-                      <td>Gelora Bung Karno, Jakarta, Indonesia</td>
+                      <td><?php echo $hasil["lokasi_konser"] ?></td>
                     </tr>
                     <tr>
                       <td><img src="images/icon-calendar.png" alt="" /></td>
-                      <td>Sabtu, 25 Mei 2024 : 19.00 WIB</td>
+                      <td><?php echo $hasil["tgl_konser"] ?></td>
                     </tr>
                   </table>
                 </div>
@@ -120,6 +128,7 @@ if (!isset($_SESSION["username"])) {
         </div>
         <div class="gambar-kursi">
           <table>
+            <form method="post" action="pesan-page.php">
             <tr>
               <td rowspan="5">
                 <table>
@@ -132,64 +141,71 @@ if (!isset($_SESSION["username"])) {
                 </table>
               </td>
               <td>VVIP</td>
-              <td>Rp 5.000.000,00</td>
+              <td id="harga-vvip"><?php echo $hasil["vvip"] ?></td>
               <td>
                 <form>
+                  <input type="hidden" name="idkonser" value="<?php echo $hasil["id_konser"] ?>">
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-vvip" id="jumlah-vvip" min="0" placeholder="0" />
-                </form>
+                  <input type="number" name="jumlah-vvip" id="jumlah-vvip" min="0" placeholder="0" onkeyup="totalvvip()"/>
+                  <input type="hidden" name="harga-vvip" value="<?php echo $hasil["vvip"] ?>">
+                  
+            
               </td>
-              <td>stok: 13</td>
+              <td>stok: <?php echo $hasil["stock_vvip"] ?></td>
             </tr>
             <tr>
               <td>VIP</td>
-              <td>Rp 4.000.000,00</td>
+              <td id="harga-vip"><?php echo $hasil["vip"] ?></td>
               <td>
-                <form>
+                
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-vip" id="jumlah-vip" min="0" placeholder="0" />
-                </form>
+                  <input type="number" name="jumlah-vip" id="jumlah-vip" min="0" placeholder="0" onkeyup="totalvip()"/>
+                  <input type="hidden" name="harga-vip" value="<?php echo $hasil["vip"] ?>">
+                 
+                
               </td>
-              <td>stok: 23</td>
+              <td>stok: <?php echo $hasil["stock_vip"] ?></td>
             </tr>
             <tr>
-              <td>GOLD</td>
-              <td>Rp 3.000.000,00</td>
+              <td>PREMIUM</td>
+              <td id="harga-premium"><?php echo $hasil["premium"] ?></td>
               <td>
-                <form>
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-gold" id="jumlah-gold" min="0" placeholder="0" />
-                </form>
+                  <input type="number" name="jumlah-premium" id="jumlah-premium" min="0" placeholder="0" onkeyup="totalpremium()" />
+                  <input type="hidden" name="harga-premium" value="<?php echo $hasil["premium"] ?>">
+                  
               </td>
-              <td>stok: 43</td>
+              <td>stok: <?php echo $hasil["stock_premium"] ?></td>
             </tr>
             <tr>
-              <td>SILVER</td>
-              <td>Rp 2.300.000,00</td>
+              <td>REGULER</td>
+              <td id="harga-reguler"><?php echo $hasil["reguler"] ?></td>
               <td>
-                <form>
+             
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-silver" id="jumlah-silver" min="0" placeholder="0" />
-                </form>
+                  <input type="number" name="jumlah-reguler" id="jumlah-reguler" min="0" placeholder="0" onkeyup="totalreguler()"/>
+                  <input type="hidden" name="harga-reguler" value="<?php echo $hasil["reguler"] ?>">
+                
               </td>
-              <td>stok: 38</td>
+              <td>stok: <?php echo $hasil["stock_reguler"] ?></td>
             </tr>
             <tr>
               <td>
-                <form>
+               
                   <label for="total-harga">Total harga </label>
-                </form>
+                
               </td>
               <td>
-                <form>
-                  <input type="text" id="total-harga" name="total-harga" disabled placeholder="Rp 5.300.000,00" />
-                </form>
-              </td>
-              <td colspan="2">
-                <a href="pesan-page.html"><button class="button">Beli Tiket</button></a>
-              </td>
-            </tr>
-          </table>
+             
+                  Rp. <input type="text" id="total-harga" name="total-harga" readonly value="0"/>
+                  <!-- <p id="total-harga">0</p> -->
+                </td>
+                <td colspan="2">
+                  <a href="pesan-page.php>"><button type="sumbit" class="button">Beli Tiket</button></a>
+                </td>
+              </tr>
+            </form>
+            </table>
         </div>
       </div>
     </main>
@@ -258,6 +274,7 @@ if (!isset($_SESSION["username"])) {
         <p>@COPYRIGHT 2024 VVG</p>
       </div>
     </footer>
+    
   </body>
   <script>
     function logout() {
@@ -266,5 +283,67 @@ if (!isset($_SESSION["username"])) {
         window.location='hapusSession.php';
       }
     }
+
+
+    function vvip(){
+      var jumlahvvip = document.getElementById("jumlah-vvip").value;
+      var hargavvip = document.getElementById("harga-vvip").innerText;
+      if (jumlahvvip.length == 0) {
+        return 0;
+      }else{
+        return parseInt(jumlahvvip) * parseInt(hargavvip);
+      }
+    }
+
+    function vip(){
+      var jumlahvip = document.getElementById("jumlah-vip").value;
+      var hargavip = document.getElementById("harga-vip").innerText;
+      if (jumlahvip.length == 0) {
+        return 0;
+      }else{
+        return parseInt(jumlahvip) * parseInt(hargavip);
+      }
+    }
+
+    function premium(){
+      var jumlahpremium = document.getElementById("jumlah-premium").value;
+      var hargapremium = document.getElementById("harga-premium").innerText;
+      if (jumlahpremium.length == 0) {
+        return 0;
+      }else{
+        return parseInt(jumlahpremium) * parseInt(hargapremium);
+      }
+    }
+
+    function reguler(){
+      var jumlahreguler = document.getElementById("jumlah-reguler").value;
+      var hargareguler = document.getElementById("harga-reguler").innerText;
+      if (jumlahreguler.length == 0) {
+        return 0;
+      }else{
+        return parseInt(jumlahreguler) * parseInt(hargareguler);
+      }
+    }
+   
+   function totalvvip(){
+      var totalharga = document.getElementById("total-harga");
+      totalharga.setAttribute("value", vvip()+vip()+premium()+reguler());
+   }
+
+   function totalvip(){
+      var totalharga = document.getElementById("total-harga");
+      totalharga.setAttribute("value", vvip()+vip()+premium()+reguler());
+   }
+   function totalpremium(){
+      var totalharga = document.getElementById("total-harga");
+      totalharga.setAttribute("value", vvip()+vip()+premium()+reguler());
+   }
+   
+   function totalreguler(){
+      var totalharga = document.getElementById("total-harga");
+      totalharga.setAttribute("value", vvip()+vip()+premium()+reguler());
+   }
+
+    
   </script>
 </html>

@@ -105,21 +105,18 @@ while ($row = mysqli_fetch_assoc($result)) {
         <div class="header"><h3>HOT</h3></div>
         <div class="content">
           <?php foreach($data as $dt) { ?>
-            <div class="card">
-            <div class="img"><img src="images/<?php echo $dt["gambar_konser"]; ?>" alt=""></div>
-            <div class="deskripsi">
-              <div class="title">
-                <h4><?php echo $dt["artis_konser"]; ?></h4>
-                <h4><?php echo $dt["lokasi_konser"]; ?></h4>
+            <a href="detail-page.php?id_konser=<?php echo $dt["id_konser"]; ?>" class="link">
+              <div class="card">
+                <div class="img"><img src="images/<?php echo $dt["gambar_konser"]; ?>" alt=""></div>
+                <div class="deskripsi">
+                  <div class="title">
+                    <h4 class="artis"><?php echo $dt["artis_konser"]; ?></h4>
+                    <h4 class="lokasi"><?php echo $dt["negara_konser"]; ?></h4>
+                  </div>
+                </div>
               </div>
-              <div class="div-check">
-                <a href="#" class="click">
-                  <div class="button">Check</div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <?php } ?>
+              <?php } ?>
+            </a>
         </div>
       </div>
     </main>

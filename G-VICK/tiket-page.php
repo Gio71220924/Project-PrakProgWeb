@@ -109,11 +109,11 @@ if (isset($_POST["cari"])) {
         <div class="daftar">
           <?php foreach ($data as $dt) { ?>
             <div class="card">
-              <div class="lokasi"><?php echo $dt["lokasi_konser"] ?></div>
+              <div class="lokasi"><?php echo $dt["negara_konser"] ?></div>
               <div class="img"><img src="images/<?php echo $dt["gambar_konser"] ?>" alt=""></div>
               <div class="deskripsi">
                   <h4 class="namakonser"><?php echo $dt["nama_konser"] ?></h4>
-                  <h4 class="artis">-<?php echo $dt["artis_konser"] ?>-</h4>
+                  <h4 class="artis"><?php echo $dt["artis_konser"] ?></h4>
               </div>
               <div class="price">
                   <div class="icon"><span class="material-symbols-outlined">
@@ -122,7 +122,7 @@ if (isset($_POST["cari"])) {
                   </div>
                   <div class="harbut">
                     <div class="harga">IDR <?php echo $dt["reguler"] ?></div>
-                    <a href="#"><div class="pesan"> BELI </div></a>
+                    <a href="detail-page.php?id_konser=<?php echo $dt["id_konser"] ?>"><div class="pesan"> BELI </div></a>
                   </div>
                 </div>
           </div>

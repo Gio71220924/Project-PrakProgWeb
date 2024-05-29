@@ -1,3 +1,51 @@
+<?php
+session_start();
+require 'koneksi.php';
+function pesanan($pesanan){
+      $tampung = [];
+      if ($pesanan["jumlah-vvip"] > 0) {
+          $vvip = $pesanan["jumlah-vvip"];
+          for ($i=0; $i < $vvip ; $i++) { 
+              $tampung[] = array("VVIP",$pesanan["harga-vvip"]);
+          }
+      }
+
+      if ($pesanan["jumlah-vvip"] > 0) {
+          $vip = $pesanan["jumlah-vip"];
+          for ($i=0; $i < $vip ; $i++) { 
+              $tampung[] = array("VIP",$pesanan["harga-vip"]);
+          }
+      }
+
+      if ($pesanan["jumlah-premium"] > 0) {
+        $premium = $pesanan["jumlah-premium"];
+        for ($i=0; $i < $premium ; $i++) { 
+            $tampung[]= array("PREMIUM",$pesanan["harga-premium"]);
+        }
+    }
+
+    if ($pesanan["jumlah-reguler"] > 0) {
+      $reguler = $pesanan["jumlah-reguler"];
+      for ($i=0; $i < $reguler ; $i++) { 
+          $tampung[] = array("REGULER",$pesanan["harga-reguler"]);
+      }
+
+    }
+
+    return $tampung;
+}
+
+$idkonser = $_POST["idkonser"];
+$query = "SELECT * FROM data_konser WHERE id_konser = $idkonser";
+$result = mysqli_query($koneksi,$query);
+$data = mysqli_fetch_assoc($result);
+
+$tiket = pesanan($_POST);
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,6 +56,13 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link rel="icon" type="images/icon.png" href="images/icon.png">
     <title>Website Pemesanan Tiket G-VicxID</title>
+    <style>
+      <?php
+      
+      include 'style-pesan.css';
+      
+      ?>
+    </style>
   </head>
   <body>
     <header>
@@ -45,116 +100,98 @@
       <div class="breadcrums">
         <h1>Form Data Diri</h1>
         <ul>
-          <li><a href="tiket-page.html">Tiket</a></li>
+          <li><a href="tiket-page.php">Tiket</a></li>
           <li><a href="#"></a><span>&#11166;</span></li>
-          <li><a href="detail-page.html">Detail </a></li>
+          <li><a href="detail-page.php?id_konser=<?php echo $idkonser; ?>">Detail </a></li>
           <li><a href="#"></a><span>&#11166;</span></li>
-          <li><a href="pesan-page.html">Pesan </a></li>
+          <li><a href="pesan-page.php">Pesan </a></li>
            <!-- &#11208; -->
         </ul>
       </div>  
-      <hr>
-        
-      <div class="tikettiket">
-          <h1 class="judultiket">Tiket 1</h1>
-          <h1 class="judultiket2">Tiket 2</h1>
-
-      </div>
-      <div class="form1besar">
-        <div class="form1a">
+      <hr>  
+            <p class="total">Harga Total : Rp. <?php echo $_POST["total-harga"] ?></p>
             <form class="formall">
 
-              <!-- <form  class="kosong"> -->
+              <div class="flex">
+              <?php
+              for ($i=0; $i < count($tiket); $i++) { ?>
                 
-                <h2 class="nama">Nama</h2>
-                
-                <input type="text" class="boxnama" placeholder="Masukan Nama lengkap anda" size="40" height="50" required>
-                
-                <h2 class="email-pesan">E-mail</h2>
-                <input type="email" class="boxemail" placeholder="Masukan email anda" size="40" required>
-                
-                <h2 class="email-pesan">Nama Konser</h2>
-                <input type="text" class="boxkonser" value="Avenged Sevenfold" size="40" disabled required>
-                
-                <h2 class="tanggal">Tanggal Konser</h2>
-                <input type="date" class="boxtanggal" value="2024-05-25" required disabled>
-                
+                <table class="formtb">
+                  <tr>
+                  <td>
+                    <p class="notiket">Tiket : <?php echo $i+1; ?></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td> 
+                    <h2 class="nama">Nama</h2>
+                    <input type="text" class="boxnama" placeholder="Masukan Nama lengkap anda" size="40" height="50" required>
+                  </td>
+                  <td>
+                        <h2 class="email-pesan">E-mail</h2>
+                        <input type="email" class="boxemail" placeholder="Masukan email anda" size="40" required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h2 class="email-pesan">Nama Konser</h2>
+                        <input type="text" class="boxkonser" value="<?php echo $data["nama_konser"] ?>" size="40" readonly required>
+                      </td>
+                      <td>
+                      <h2 class="tanggal">Tanggal Konser</h2>
+                        <input type="text" class="boxtanggal" value="<?php echo $data["tgl_konser"] ?>" size="40" required readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h2 class="email-pesan">Artis Konser</h2>
+                        <input type="text" class="boxkonser" value="<?php echo $data["artis_konser"] ?>" size="40" readonly required>
+                      </td>
+                      <td>
+                      <h2 class="email-pesan">Lokasi Konser</h2>
+                        <input type="text" class="boxkonser" value="<?php echo $data["lokasi_konser"] ?>" size="40" readonly required>
+                      </td>
+                    </tr>
+                  <tr>
+                    <td>
+                      <h2 class="notelpon">Nomor telepon</h2>
+                      <input type="text" placeholder="Nomor HP" required size="40">
+                    </td>
+                    <td>
+                      <h2 class="usia">Usia</h2>
+                      <input type="number" class="age" placeholder="Usia" max="99" min="0" size="40" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h2 class="jenistiket">Jenis Tiket:</h2>
+                      <input type="text" name="jenistiket" id="jenistiket" class="pilihantiket" value="<?php echo $tiket[$i][0]; ?>" size="40" readonly>
+                    </td>
+                    <td>
+                      <h2 class="harga">Total harga:</h2>
+                      <input type="text" name="harga" id="harga" class="totalharga" value="<?php echo $tiket[$i][1]; ?>" readonly>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <!-- <button type="reset" value="Reset" class="reset1">Reset</button>
+                      <div class="kotak">
+                        <button type="button" class="Cancel" onclick="location.href = 'detail-page.html' ">Cancel</button>
+                        <button type="submit" name="submit" id="submit" value="Lanjutkan" class="isipesan" size="3" onclick="location.href = 'notif.html' ">Lanjutkan</button>
+                      </div> -->
+                      
+                    </td>
+                  </tr>
+                </table>
+                <?php } ?>
               </div>
-              
-              <div class="form1b">
-                  <h2 class="notelpon">Nomor telepon</h2>
+            </form>
+  </main>
 
-                  <div class="kotak2">
-                    <div class="nomor2">+62</div>
-                    <input type="text" placeholder="Nomor HP" required>
-                </div>
-            
-      
-                <h2 class="usia">Usia</h2>
-                  <input type="number" class="age" placeholder="Usia" max="99" min="0" size="40" required>
-                  
-                  <h2 class="jenistiket">Jenis Tiket:</h2>
-                  <input type="text" name="jenistiket" id="jenistiket" class="pilihantiket" value="VVIP" size="40" disabled> 
-                  
-                  <h2 class="harga">Total harga:</h2>
-                  <input type="text" name="harga" id="harga" class="totalharga" value="Rp 5.000.000" disabled>
-                    
-                  <input type="reset" value="Reset" class="reset1">
-              </div>
-              
-              <div class="form2a">
-                <!-- <form class="kosong2"> -->
-                  <h2 class="nama">Nama</h2>
-                  <input type="text" class="boxnama" placeholder="Masukan Nama lengkap anda" size="40" required>
-                  
-                  <h2 class="email-pesan">E-mail</h2>
-                  <input type="email" class="boxemail" placeholder="Masukan email anda" size="40" required>
-                  
-                  <h2 class="email-pesan">Nama Konser</h2>
-                  <input type="text" class="boxkonser" value="Avenged Sevenfold" size="40"  disabled required>
-                  
-                  <h2 class="tanggal">Tanggal Konser</h2>
-                  <input type="date" class="boxtanggal" value="2024-05-25" required disabled >
-                </div>
-                
-                
-                <div class="form2b">
-                  <h2 class="notelpon">Nomor telepon</h2>
-                  
-                  <div class="kotak">
-                    <div class="nomor">+62</div>
-                    <input type="text" placeholder="Nomor HP" required>
-                </div>
-            
-
-                  <h2 class="usiaa">Usia</h2>
-                  <input type="number" class="age" placeholder="Usia" max="99" min="0" size="40" required>
-                  
-                  <h2 class="jenistiket">Jenis Tiket:</h2>
-                  <input type="text" name="jenistiket" id="jenistiket" class="pilihantiket" value="VIP" size="40" disabled> 
-                  
-                  <h2 class="harga">Total harga:</h2>
-                  <input type="text" name="harga" id="harga" class="totalharga" value="Rp 4.000.000" disabled>
-                
-                    <input type="reset" name="reset" id="reset" value="Reset" class="reset2" >              
-                  
-                <!-- </form> -->
-              </div>
-              
-            </div>
-
-      <div class="kotak">
-        <button type="button" class="Cancel" onclick="location.href = 'detail-page.html' ">Cancel</button>
-        <button type="submit" name="submit" id="submit" value="Lanjutkan" class="isipesan" size="3" onclick="location.href = 'notif.html' ">Lanjutkan</button>
-      </div>
-    </form>
-      
-    </main>
-
-    
-    <footer>
-      <div class="keterangan-footer">
-        <img src="images/icon.png" alt="logo" class="logo" />
+  
+  <footer>
+    <div class="keterangan-footer">
+      <img src="images/icon.png" alt="logo" class="logo" />
         <h1>G-VicxID</h1>
         <p>Website ini merupakan website pemesanan tiket konser yang dibuat oleh tiga orang, yaitu: Gio, Vicky, dan Vincen. Website ini dibuat sebagai Proyek MataKuliah Praktikum Pemograman Web</p>
       </div>

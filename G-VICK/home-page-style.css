@@ -249,12 +249,37 @@ main .ticket .card .img img {
   border-top-right-radius: 8px;
 }
 
-main .ticket .card .deskripsi .title {
+main .ticket .card .deskripsi .title .artis {
   text-align: center;
+  color: white;
+  background-color: #383c48;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  width: 250px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+a.link{
+  text-decoration: none;
+}
+
+main .ticket .card .deskripsi .title .lokasi {
+  display: flex;
+  text-align: center;
+  justify-content: center;
   color: #383c48;
   font-family: 'Montserrat';
-  font-size: 18px;
-  line-height: 0.1;
+  font-size: 14px;
+  width: 250px;
+  height: 40px;
+  position: relative;
+  top: -10px;
+
 }
 
 main .ticket .card a {
@@ -293,6 +318,8 @@ main .ticket .card .deskripsi a.click .button:hover {
   /* box-shadow: -1px -1px 2px #7386c0, 1px 1px 2px #7386c0; */
   box-shadow: -1px -1px 10px gray, 1px 1px 10px gray;
 }
+
+
 
 /* MAIN END */
 
