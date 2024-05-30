@@ -242,8 +242,8 @@ $tiket = pesanan($_POST);
 
       <div class="contact-us">
         <h1>Concact Us</h1>
-        <form class="form">
-          <textarea name="5" id="" cols="30" rows="6" placeholder="Masukan pesan anda"></textarea>
+        <form class="form" onsubmit="return kontak()">
+          <textarea name="5" id="textarea" cols="30" rows="6" placeholder="Masukan pesan anda" id="textarea"></textarea>
           <br />
           <input type="submit" name="submit" id="submit" value="Submit" class="submit" />
         </form>
@@ -259,6 +259,16 @@ $tiket = pesanan($_POST);
       var keluar = window.confirm("Apakah anda yakin ingin logout?");
       if (keluar) {
         window.location='hapusSession.php';
+      }
+    }
+
+    function kontak(){
+      if(document.getElementById("textarea").value ==""){
+        alert("Diisi dulu form kontak nya ya!");
+        return false;
+      }else{
+        alert("Terimakasih telah menghubungi kami!");
+        return true;
       }
     }
   </script>
