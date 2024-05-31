@@ -47,7 +47,7 @@ body {
 
 #logout:hover {
   cursor: pointer;
-  color:#0094ff;
+  color: #0094ff;
 }
 .navbar {
   padding: 10px;
@@ -186,7 +186,7 @@ main .daftar {
   padding-left: 5%;
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 5%;
   box-sizing: border-box;
   /* justify-content: space-evenly; */
 }
@@ -196,6 +196,7 @@ main .daftar .card {
   width: 250px;
   height: 400px;
   border-radius: 10px;
+  margin-bottom: 3%;
   /* background-color: #7386c0; */
   box-sizing: border-box;
   /* outline: 1px solid #c2bebe; */
@@ -210,10 +211,13 @@ main .daftar .card:hover {
   /* background-color: #d7deff; */
   /* background-color: #b9fcea; */
   /* background-color: #e5e7e0; */
-  cursor: pointer;
+  cursor: default;
   background-color: #e8e8e8;
   outline: 2px solid #3a3c75;
   box-shadow: 10px 10px 10px #7386c0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.4s;
+  transform: translateY(-4px);
 }
 
 main .daftar .card .img {
@@ -228,8 +232,7 @@ main .daftar .card .img img {
   height: 170px;
 }
 
-
-main .daftar .card .deskripsi .namakonser{
+main .daftar .card .deskripsi .namakonser {
   position: relative;
   top: 9px;
   text-align: center;
@@ -241,10 +244,9 @@ main .daftar .card .deskripsi .namakonser{
   display: flex;
   align-items: center;
   /* text-shadow: -3px -3px  5px #3d496f, 3px 3px 5px #3d496f; */
-
 }
 
-main .daftar .card .deskripsi .artis{
+main .daftar .card .deskripsi .artis {
   text-align: center;
   font-family: 'Montserrat';
   color: white;
@@ -254,16 +256,14 @@ main .daftar .card .deskripsi .artis{
   background-color: #3d496f;
   position: relative;
   top: 5px;
- 
 }
 
-.harbut{
+.harbut {
   width: 100%;
   display: flex;
   justify-content: space-between;
   position: relative;
   top: 25px;
-
 }
 
 main .daftar .card .deskripsi h4 {

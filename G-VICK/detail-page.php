@@ -52,7 +52,7 @@ $hasil = mysqli_fetch_assoc($result);
         <div class="menu">
           <a href="#" class="menu-navbar" id="logout" onclick="logout()">LOGOUT</a>
           <a href="my-ticket.php" class="menu-navbar">TIKETKU</a>
-          <a href="tiket-page.html" class="menu-navbar">TIKET</a>
+          <a href="tiket-page.php" class="menu-navbar">TIKET</a>
           <a href="home-page.php" class="menu-navbar">HOME</a>
         </div>
         <!-- Menu end -->
@@ -71,7 +71,7 @@ $hasil = mysqli_fetch_assoc($result);
             <ul>
               <li><a href="tiket-page.php">Tiket</a></li>
               <li><a href="#"></a><span>&#11166;</span></li>
-              <li><a href="detail-page.php">Detail </a></li>
+              <li><a href="">Detail </a></li>
               <!-- &#11208; -->
             </ul>
           </div>
@@ -146,7 +146,7 @@ $hasil = mysqli_fetch_assoc($result);
                 <form>
                   <input type="hidden" name="idkonser" value="<?php echo $hasil["id_konser"] ?>">
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-vvip" id="jumlah-vvip" min="0" placeholder="0" onkeyup="totalvvip()"/>
+                  <input type="number" name="jumlah-vvip" id="jumlah-vvip" min="0" placeholder="0" onkeyup="totalvvip()" onchange="totalvvip()"/>
                   <input type="hidden" name="harga-vvip" value="<?php echo $hasil["vvip"] ?>">
                   
             
@@ -159,7 +159,7 @@ $hasil = mysqli_fetch_assoc($result);
               <td>
                 
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-vip" id="jumlah-vip" min="0" placeholder="0" onkeyup="totalvip()"/>
+                  <input type="number" name="jumlah-vip" id="jumlah-vip" min="0" placeholder="0" onkeyup="totalvip()" onchange="totalvip()"/>
                   <input type="hidden" name="harga-vip" value="<?php echo $hasil["vip"] ?>">
                  
                 
@@ -171,7 +171,7 @@ $hasil = mysqli_fetch_assoc($result);
               <td id="harga-premium"><?php echo $hasil["premium"] ?></td>
               <td>
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-premium" id="jumlah-premium" min="0" placeholder="0" onkeyup="totalpremium()" />
+                  <input type="number" name="jumlah-premium" id="jumlah-premium" min="0" placeholder="0" onkeyup="totalpremium()" onchange="totalpremium()" />
                   <input type="hidden" name="harga-premium" value="<?php echo $hasil["premium"] ?>">
                   
               </td>
@@ -183,7 +183,7 @@ $hasil = mysqli_fetch_assoc($result);
               <td>
              
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-reguler" id="jumlah-reguler" min="0" placeholder="0" onkeyup="totalreguler()"/>
+                  <input type="number" name="jumlah-reguler" id="jumlah-reguler" min="0" placeholder="0" onkeyup="totalreguler()" onchange="totalreguler()"/>
                   <input type="hidden" name="harga-reguler" value="<?php echo $hasil["reguler"] ?>">
                 
               </td>
