@@ -1,6 +1,11 @@
 body {
   padding: 0px;
   margin: 0px;
+  background-image: url('images/background-ticket.jpeg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* NAVBAR */
@@ -186,7 +191,7 @@ main .daftar {
   padding-left: 5%;
   display: flex;
   flex-wrap: wrap;
-  gap: 5%;
+  gap: 2%;
   box-sizing: border-box;
   /* justify-content: space-evenly; */
 }
