@@ -96,6 +96,9 @@ header {
 }
 /* NAVBAR END */
 
+
+
+
 /* FOOTER */
 footer {
   clear: both;
@@ -556,7 +559,7 @@ input:focus {
   
 }
 
-.flex{
+.flex{  
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -567,10 +570,11 @@ input:focus {
   margin-bottom: 20px;
   font-family: 'Montserrat';
   font-weight: bold;
-  color: #3f496c;
+  color:white;
   position: relative;
   top: -30px;
- 
+  background-color: #3f496c;
+  padding-bottom: 30px;  
   
 }
 
