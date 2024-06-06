@@ -9,7 +9,19 @@ body {
 }
 
 #username {
-  font-weight: bolder;
+  font-weight:900;
+}
+
+.tulisan{
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.tulisan h1{
+  /* margin-top:  100px; */
+  margin: 15px;
+  margin-left: -2px;
 }
 
 #regis {

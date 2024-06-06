@@ -70,19 +70,24 @@ while ($row = mysqli_fetch_assoc($result)) {
       <div class="banner">
         <div class="isi">
           <div class="tulisan">
-            <h1>GET YOUR</h1>
-            <h1>TICKET</h1>
+            <h1>Haloooo</h1>
+            <h1 id="username">
+              <?php
+                if (isset($_SESSION["username"])) {
+                  echo $_SESSION["username"]."!";
+                }
+              ?>
+            </h1>
           </div>
           <div class="deskripsi">
-            <p>Haloooo
-            <span id="username">
+            <!-- <span id="username">
               <?php
                 if (isset($_SESSION["username"])) {
                   echo $_SESSION["username"];
                 }
               ?>
-            </span>
-            !!  Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID. <span>
+            </span> -->
+              Website G-VicxID ini adalah website yang dapat membantu kamu dalam mencari dan membeli tiket konser yang diadakan di Indonesia. Temukan kemudahan dalam persiapan mengikuti konser anda hanya di G-VicxID. <span>
               <?php
                 if (!isset($_SESSION["username"])) {
                   echo 'Silahkan login untuk mengakses fitur-fitur yang ada. Silahkan';
