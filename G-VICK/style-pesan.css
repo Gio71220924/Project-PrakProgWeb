@@ -96,9 +96,6 @@ header {
 }
 /* NAVBAR END */
 
-
-
-
 /* FOOTER */
 footer {
   clear: both;
@@ -350,6 +347,45 @@ hr{
   text-decoration: none;
   color: #3f496c;
 }
+
+.kotak{
+  width: 400px;
+  height: 50px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.kotak a{
+  display: inline-flex;
+  width: 120px;
+  height: 40px;
+  text-decoration: none;
+  background-color: #3f496c;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  position: relative;
+  left: -20px;
+
+
+}
+
+.isipesan{
+  width: 120px;
+  height: 40px;
+  background-color: #3f496c;
+  color: white;
+  border-radius: 10px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+ border: 1px solid #3f496c;
+ position: relative;
+ top: -1px;
+ left: 180px;
+}
 /* .judultiket {
   margin-left: 10px;
   padding-left: 20px;
@@ -559,7 +595,7 @@ input:focus {
   
 }
 
-.flex{  
+.flex{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -570,11 +606,11 @@ input:focus {
   margin-bottom: 20px;
   font-family: 'Montserrat';
   font-weight: bold;
-  color:white;
+  color: white;
   position: relative;
   top: -30px;
   background-color: #3f496c;
-  padding-bottom: 30px;  
+ 
   
 }
 
@@ -584,6 +620,7 @@ input:focus {
   border-radius: 5px;
   padding-left: 5px;
   border: 1px solid grey;
+  
 }
 
 .formtb input:focus{

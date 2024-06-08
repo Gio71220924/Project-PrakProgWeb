@@ -10,7 +10,7 @@ function pesanan($pesanan){
           }
       }
 
-      if ($pesanan["jumlah-vvip"] > 0) {
+      if ($pesanan["jumlah-vip"] > 0) {
           $vip = $pesanan["jumlah-vip"];
           for ($i=0; $i < $vip ; $i++) { 
               $tampung[] = array("VIP",$pesanan["harga-vip"]);
@@ -41,6 +41,10 @@ $result = mysqli_query($koneksi,$query);
 $data = mysqli_fetch_assoc($result);
 
 $tiket = pesanan($_POST);
+$stokvvip = $_POST["jumlah-vvip"];
+$stokvip = $_POST["jumlah-vip"];
+$stokpremium = $_POST["jumlah-premium"];
+$stokreguler = $_POST["jumlah-reguler"];
 
 
 ?>
@@ -86,9 +90,9 @@ $tiket = pesanan($_POST);
         <!-- Menu -->
         <div class="menu">
           <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
-          <a href="my-ticket.php" class="menu-navbar">TIKETKU</a>
-          <a href="tiket-page.php" class="menu-navbar">TIKET</a>
-          <a href="home-page.php" class="menu-navbar">HOME</a>
+          <a href="tiket-saya.php" class="menu-navbar">TIKETKU</a>
+          <a href="tiket-page.html" class="menu-navbar">TIKET</a>
+          <a href="home-page.html" class="menu-navbar">HOME</a>
         </div>
         <!-- Menu end -->
       </nav>
@@ -110,8 +114,13 @@ $tiket = pesanan($_POST);
       </div>  
       <hr>  
             <p class="total">Harga Total : Rp. <?php echo $_POST["total-harga"] ?></p>
-            <form class="formall">
-
+            <form class="formall" method="post" action="sementara.php">
+              <input type="hidden" name="id_konser" value="<?php echo $data["id_konser"] ?>">
+              <input type="hidden" name="datavvip" value="<?php echo $stokvvip ?>">
+              <input type="hidden" name="datavip" value="<?php echo $stokvip ?>">
+              <input type="hidden" name="datapre" value="<?php echo $stokpremium ?>">
+              <input type="hidden" name="datareg" value="<?php echo $stokreguler ?>">
+              
               <div class="flex">
               <?php
               for ($i=0; $i < count($tiket); $i++) { ?>
@@ -125,51 +134,51 @@ $tiket = pesanan($_POST);
                 <tr>
                   <td> 
                     <h2 class="nama">Nama</h2>
-                    <input type="text" class="boxnama" placeholder="Masukan Nama lengkap anda" size="40" height="50" required>
+                    <input type="text" name="nama[]" class="boxnama" placeholder="Masukan Nama lengkap anda" size="40" height="50" required >
                   </td>
                   <td>
                         <h2 class="email-pesan">E-mail</h2>
-                        <input type="email" class="boxemail" placeholder="Masukan email anda" size="40" required>
+                        <input type="email" name="email[]" class="boxemail" placeholder="Masukan email anda" size="40" required>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <h2 class="email-pesan">Nama Konser</h2>
-                        <input type="text" class="boxkonser" value="<?php echo $data["nama_konser"] ?>" size="40" readonly required>
+                        <input type="text" name="nama_konser[]" class="boxkonser" value="<?php echo $data["nama_konser"] ?>" size="40" readonly required>
                       </td>
                       <td>
                       <h2 class="tanggal">Tanggal Konser</h2>
-                        <input type="text" class="boxtanggal" value="<?php echo $data["tgl_konser"] ?>" size="40" required readonly>
+                        <input type="text" name="tanggal_konser[]" class="boxtanggal" value="<?php echo $data["tgl_konser"] ?>" size="40" required readonly>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <h2 class="email-pesan">Artis Konser</h2>
-                        <input type="text" class="boxkonser" value="<?php echo $data["artis_konser"] ?>" size="40" readonly required>
+                        <input type="text" name="artis_konser[]" class="boxkonser" value="<?php echo $data["artis_konser"] ?>" size="40" readonly required>
                       </td>
                       <td>
                       <h2 class="email-pesan">Lokasi Konser</h2>
-                        <input type="text" class="boxkonser" value="<?php echo $data["lokasi_konser"] ?>" size="40" readonly required>
-                      </td>
+                        <input type="text" name="lokasi_konser[]" class="boxkonser" value="<?php echo $data["lokasi_konser"] ?>" size="40" readonly required>
+                      </td> 
                     </tr>
                   <tr>
                     <td>
                       <h2 class="notelpon">Nomor telepon</h2>
-                      <input type="text" placeholder="Nomor HP" required size="40">
+                      <input type="text" name="noHp[]" placeholder="Nomor HP" required size="40">
                     </td>
                     <td>
                       <h2 class="usia">Usia</h2>
-                      <input type="number" class="age" placeholder="Usia" max="99" min="0" size="40" required>
+                      <input type="number" name="usia[]" class="age" placeholder="Usia" max="99" min="0" size="40" required>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <h2 class="jenistiket">Jenis Tiket:</h2>
-                      <input type="text" name="jenistiket" id="jenistiket" class="pilihantiket" value="<?php echo $tiket[$i][0]; ?>" size="40" readonly>
+                      <input type="text" name="tiket[]" id="jenistiket" class="pilihantiket" value="<?php echo $tiket[$i][0]; ?>" size="40" readonly>
                     </td>
                     <td>
                       <h2 class="harga">Total harga:</h2>
-                      <input type="text" name="harga" id="harga" class="totalharga" value="<?php echo $tiket[$i][1]; ?>" readonly>
+                      <input type="text" name="harga[]" id="harga" class="totalharga" value="<?php echo $tiket[$i][1]; ?>" readonly>
                     </td>
                   </tr>
                   <tr>
@@ -184,6 +193,12 @@ $tiket = pesanan($_POST);
                   </tr>
                 </table>
                 <?php } ?>
+              </div>
+              <div class="kotak">
+                  <a href="detail-page.php?id_konser=<?php echo $idkonser; ?>">Batal </a>
+                  <!-- <button type="submit" name="pesan" id="submit" value="Lanjutkan" class="isipesan" size="3" onclick="location.href = 'notif.html' ">Lanjutkan</button> -->
+                  <!-- <button type="submit" name="pesan" id="submit" value="Lanjutkan" class="isipesan" size="3" onclick="cek()">Lanjutkan</button> -->
+                  <button type="submit" name="pesan" id="pesan" value="Lanjutkan" class="isipesan" size="3" onclick="cek()">Pesan</button>
               </div>
             </form>
   </main>
@@ -242,8 +257,8 @@ $tiket = pesanan($_POST);
 
       <div class="contact-us">
         <h1>Concact Us</h1>
-        <form class="form" onsubmit="return kontak()">
-          <textarea name="5" id="textarea" cols="30" rows="6" placeholder="Masukan pesan anda" id="textarea"></textarea>
+        <form class="form">
+          <textarea name="5" id="" cols="30" rows="6" placeholder="Masukan pesan anda"></textarea>
           <br />
           <input type="submit" name="submit" id="submit" value="Submit" class="submit" />
         </form>
@@ -262,14 +277,29 @@ $tiket = pesanan($_POST);
       }
     }
 
-    function kontak(){
-      if(document.getElementById("textarea").value ==""){
-        alert("Diisi dulu form kontak nya ya!");
-        return false;
-      }else{
-        alert("Terimakasih telah menghubungi kami!");
-        return true;
+    function cek(){
+      var data =  document.getElementsByClassName("boxnama").length;
+      const tampungnama = [];
+      for (let index = 0; index < data; index++) {
+        let nama = document.getElementsByClassName("boxnama")[index].value
+        tampungnama.push(nama.toLowerCase());
       }
+
+      const duplicate = new Set(tampungnama);
+      if (tampungnama.length != duplicate.size) {
+          var konfirmasi = confirm("Maaf Nama Yang Anda Masukkan Ada Yang Sama");
+          if (konfirmasi == true) {
+            var tombol = document.getElementById("pesan");
+            tombol.setAttribute("type","button");
+          }
+          else{
+            var tombol = document.getElementById("pesan");
+            tombol.setAttribute("type","button");
+          }
+    }else{
+      var tombol = document.getElementById("pesan");
+      tombol.setAttribute("type","submit");
     }
+  }
   </script>
 </html>
