@@ -24,8 +24,11 @@ if (isset($_POST["cari"])) {
   while ($row = mysqli_fetch_assoc($result)) {
       $data[] = $row;
   }
-
 }
+
+// fetch()
+// console.log("console")
+
 ?>
 
 <!DOCTYPE html>
@@ -90,11 +93,13 @@ if (isset($_POST["cari"])) {
                 <span>Daftar Tiket</span>
             </div>
             <div class="search">
-                <select name="sort" class="select">
+                <select name="sort" class="select" onchange="sorting(event)">
                   <option value="" selected>---Sort By--</option>
-                  <option value="">Default</option>
-                  <option value=""> Harga</option>
-                  <option value="">Z - A</option>
+                  <option value="default" >Default</option>
+                  <option value="high-low">Harga Tinggi-Rendah</option>
+                  <option value="low-high">Harga Rendah-Tinggi</option>
+                  <option value="az">Nama A-Z</option>
+                  <option value="za">Nama Z-A</option>
                 </select>
                 <form action="" method="post">
                   <input type="text" name="keyword" class="input" placeholder="Search...." autofocus >
@@ -103,7 +108,7 @@ if (isset($_POST["cari"])) {
             </div>
         </div>
         <hr class="garis">
-        <div class="daftar">
+        <div class="daftar" id="daftar_konser">
           <?php foreach ($data as $dt) { ?>
             <div class="card">
               <div class="lokasi"><?php echo $dt["negara_konser"] ?></div>
@@ -198,7 +203,37 @@ if (isset($_POST["cari"])) {
           window.location='hapusSession.php';
         }
       }
-  </script>
-</html>
-</body>
+
+      a = document.getElementById("daftar_konser");
+
+      async function sorting(e) {
+        sortBy = e.target.value;
+        data = await fetch(`http://localhost/pull-vicky/Project-PrakProgWeb/G-VICK/sorting.php?by=${sortBy}`).then(response => response.json());
+        hasil = "";
+        for (const dt of data) {
+          card = `
+            <div class="card">
+              <div class="lokasi"> ${dt["negara_konser"]} </div>
+              <div class="img"><img src="images/${dt["gambar_konser"]}" alt=""></div>
+              <div class="deskripsi">
+                  <h4 class="namakonser"> ${dt["nama_konser"]} </h4>
+                  <h4 class="artis"> ${dt["artis_konser"]} </h4>
+              </div>
+              <div class="price">
+                  <div class="icon"><span class="material-symbols-outlined">
+                      event 
+                      </span> ${dt["tgl_konser"]}
+                  </div>
+                  <div class="harbut">
+                    <div class="harga">IDR  ${dt["reguler"]} </div>
+                    <a href="detail-page.php?id_konser= ${dt["id_konser"]} "><div class="pesan"> BELI </div></a>
+                  </div>
+              </div>
+            </div>`;
+          hasil += card;
+        }
+        a.innerHTML = hasil;
+
+      }
+    </script>
 </html>
