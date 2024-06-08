@@ -1,3 +1,22 @@
+<?php
+  require 'koneksi.php';
+  session_start();
+  if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    $query = "SELECT * FROM data_pemesanan WHERE username = '$username' AND tanggal_konser < CURDATE()";
+    $result = mysqli_query($koneksi,$query);
+    $tampung = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $tampung[] = $row;
+    }
+  }else{
+    header("location: login.php");
+  }
+
+
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,9 +58,9 @@
         <!-- Menu -->
         <div class="menu">
           <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
-          <a href="my-ticket.html" class="menu-navbar">TIKETKU</a>
-          <a href="tiket-page.html" class="menu-navbar">TIKET</a>
-          <a href="home-page.html" class="menu-navbar">HOME</a>
+          <a href="my-ticket.php" class="menu-navbar">TIKETKU</a>
+          <a href="tiket-page.php" class="menu-navbar">TIKET</a>
+          <a href="home-page.php" class="menu-navbar">HOME</a>
         </div>
         <!-- Menu end -->
       </nav>
@@ -53,6 +72,40 @@
             <a href="tiket-saya.php" class="tiket">TIKET SAYA</a>
             <a href="riwayat.php" class="riwayat">RIWAYAT TIKET</a>
         </div>
+
+        <div class="cover">
+          <?php foreach($tampung as $data){ ?>
+            <div class="card-tiket">
+                <div class="header">
+                    <div class="konser">
+                        <?php echo $data["nama_konser"] ?> 
+                    </div>
+                    <div class="lokasi">
+                        <?php echo $data["lokasi_konser"] ?> 
+                    </div>
+                </div>
+                <div class="name">
+                      <?php echo $data["nama"] ?> 
+                      <h4>Expired</h4>
+                </div>
+                <div class="conten">
+                    <div class="artis">
+                        <p class="title">Artis</p>
+                        <p class="deskripsi"><?php echo $data["artis_konser"] ?> </p>
+                    </div>
+                    <div class="waktu">
+                        <p class="title">Waktu</p>
+                        <p class="deskripsi"><?php echo $data["tanggal_konser"] ?> </p>
+                    </div>
+                    <div class="kelas">
+                        <p class="title">Kelas</p>
+                        <p class="deskripsi"> <?php echo $data["tiket"] ?> </p>
+                    </div>
+                </div>
+            </div>
+          <?php } ?>
+        </div>
+
     </main>
       
   <footer>

@@ -4,7 +4,7 @@ session_start();
 
 if (isset($_SESSION["username"])) {
   $username = $_SESSION["username"];
-  $query = "SELECT * FROM data_pemesanan WHERE username = '$username'";
+  $query = "SELECT * FROM data_pemesanan WHERE username = '$username' AND tanggal_konser > CURDATE()";
   $result = mysqli_query($koneksi,$query);
   $tampung = [];
   while ($row = mysqli_fetch_assoc($result)) {
