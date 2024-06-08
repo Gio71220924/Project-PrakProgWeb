@@ -60,6 +60,7 @@ $stokreguler = $_POST["jumlah-reguler"];
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link rel="icon" type="images/icon.png" href="images/icon.png">
     <title>Website Pemesanan Tiket G-VicxID</title>
+    <link rel="icon" type="images/icon.png" href="images/icon.png">
     <style>
       <?php
       

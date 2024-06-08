@@ -27,6 +27,7 @@
         include "login.css";
         ?>
     </style>
+    <link rel="icon" type="images/icon.png" href="images/icon.png">
 </head>
 <body>
     <div class="container">
