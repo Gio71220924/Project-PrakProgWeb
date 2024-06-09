@@ -2,7 +2,10 @@
     session_start();
     require 'koneksi.php';
 
-
+    if (!isset($_SESSION["username"])) {
+        header("location: login.php");
+        exit;
+    }
 
     $id = $_GET["id"];
     $username = $_POST["username"];
