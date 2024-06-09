@@ -316,3 +316,130 @@ body {
   }
   
   /* FOOTER END */
+
+
+
+  /* MAIN */
+  .breadcrums{
+    font-size: 15px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #3f496c;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .breadcrums ul {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  
+  hr{
+    margin-top: -8px;
+  }
+  .breadcrums ul li{
+    list-style-type: none;
+  }
+  
+  .breadcrums ul li a{
+    text-decoration: none;
+    color: #3f496c;
+  }
+  
+  .kotak{
+    width: 400px;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  
+  .kotak a{
+    display: inline-flex;
+    width: 120px;
+    height: 40px;
+    text-decoration: none;
+    background-color: #3f496c;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    position: relative;
+    left: -20px;
+  
+  
+  }
+  
+  .isipesan{
+    width: 120px;
+    height: 40px;
+    background-color: #3f496c;
+    color: white;
+    border-radius: 10px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+   border: 1px solid #3f496c;
+   position: relative;
+   top: -1px;
+   left: 180px;
+  }
+
+  .form1besar {
+    box-sizing: border-box;
+    
+  }
+  
+  .flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .formtb{
+    margin-bottom: 20px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: white;
+    position: relative;
+    top: -30px;
+    background-color: #3f496c;
+   
+    
+  }
+  
+  .formtb input{
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+    
+  }
+  
+  .formtb input:focus{
+    border: 1px solid rgb(230, 230, 230);
+    outline: none;
+    outline: 2px solid #6ab2f5;
+  }
+  
+  .total{
+    margin-bottom: 20px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #3f496c;
+    margin-left: 40px;
+    font-size: 25px;
+    position: relative;
+    top: -10px;
+  }
+
+  a.batal:hover{
+    transition: 200ms;
+    background-image: linear-gradient(to top, #7386c0, #5bc0be);
+    box-shadow: 0 2px 5px 2px #c0bfbf, 0 -2px 5px 2px #c0bfbf;
+  }
