@@ -2,7 +2,7 @@
 require 'koneksi.php';
 session_start();
 
-$query = "SELECT * FROM data_konser";
+$query = "SELECT * FROM data_konser ORDER BY tgl_konser DESC";
 $result = mysqli_query($koneksi, $query);
 $data = [];
 while ($row = mysqli_fetch_assoc($result)) {
@@ -18,12 +18,16 @@ if (isset($_POST["cari"])) {
             vvip LIKE '%$key%' OR
             vip LIKE '%$key%' OR
             reguler LIKE '%$key%' OR
-            lokasi_konser LIKE '%$key%'";
+            lokasi_konser LIKE '%$key%' OR
+            negara_konser LIKE '%$key%' OR
+            genre LIKE '%$key%' OR
+            tgl_konser LIKE '%$key%' ORDER BY tgl_konser DESC";
   $result = mysqli_query($koneksi, $query);
   $data = [];
   while ($row = mysqli_fetch_assoc($result)) {
       $data[] = $row;
   }
+
 }
 
 // fetch()
