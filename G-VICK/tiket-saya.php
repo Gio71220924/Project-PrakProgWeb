@@ -81,7 +81,8 @@ if (isset($_SESSION["username"])) {
                 </div>
                 <div class="name">
                       <?php echo $data["nama"] ?> 
-                    <a href="">Detail</a>
+                      <a href="" class="hapus">Hapus Tiket</a>
+                      <a href="edit" class="edit">Edit Tiket</a>
                 </div>
                 <div class="conten">
                     <div class="artis">
@@ -156,8 +157,8 @@ if (isset($_SESSION["username"])) {
 
       <div class="contact-us">
         <h1>Concact Us</h1>
-        <form class="form">
-          <textarea name="5" id="" cols="30" rows="6" placeholder="Masukan pesan anda"></textarea>
+        <form class="form"  onsubmit="return kontak()">
+          <textarea name="5" id="textarea" cols="30" rows="6" placeholder="Masukan pesan anda"></textarea>
           <br />
           <input type="submit" name="submit" id="submit" value="Submit" class="submit" />
         </form>
@@ -173,6 +174,16 @@ if (isset($_SESSION["username"])) {
       var keluar = window.confirm("Apakah anda yakin ingin logout?");
       if (keluar) {
         window.location='hapusSession.php';
+      }
+    }
+
+    function kontak(){
+      if(document.getElementById("textarea").value ==""){
+        alert("Diisi dulu form kontak nya ya!");
+        return false;
+      }else{
+        alert("Terimakasih telah menghubungi kami!");
+        return true;
       }
     }
   </script>

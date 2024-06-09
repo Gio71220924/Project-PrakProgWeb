@@ -432,6 +432,7 @@ body {
     text-align: center;
     align-items: center;
     border-left: 2px solid white;
+    justify-content: center;
  }
 
  .card-tiket .conten{
@@ -500,6 +501,7 @@ body {
     padding-top: 10px;
  }
 
+
  .card-tiket .conten .kelas .title{
     background-color: #3f496c;
     color: white;
@@ -539,8 +541,25 @@ body {
     
  }
 
+ .cover .name a.hapus{
+  display: inline-block;
+  width: 90px;
+  height: 25px;
+  text-decoration: none;
+  background-color:red;
+  color: white;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  line-height: 25px;
+  border-radius: 10px;
+}
+
+a.hapus:hover{  
+  box-shadow: 0 2px 5px 2px #c0bfbf, 0 -2px 5px 2px #c0bfbf;
+  transition: 200ms;
+ }
  
- .cover .name a{
+ .cover .name a.edit{
     display: inline-block;
     width: 90px;
     height: 25px;
@@ -552,7 +571,7 @@ body {
     line-height: 25px;
     border-radius: 10px;
  }
- .cover .name a:hover{
+ .cover .name a.edit:hover{
   transition: 200ms;
   background-image: linear-gradient(to top, #7386c0, #5bc0be);
   box-shadow: 0 2px 5px 2px #c0bfbf, 0 -2px 5px 2px #c0bfbf;
