@@ -533,6 +533,7 @@ main .cover .card-tiket{
  
 }
 
+
 .cover .name{
   text-align: center;
   color: #3f496c;
@@ -547,8 +548,9 @@ main .cover .card-tiket{
 }
 
 
+
 .cover .name h4{
-  /* display: inline-block; */
+  display: inline-block;
   width: 90px;
   height: 25px;
   margin-top: -1px;
@@ -560,10 +562,3 @@ main .cover .card-tiket{
   line-height: 25px;
   border-radius: 10px;
 }
-
-
-/* .cover .name a:hover{
-transition: 200ms;
-background-image: linear-gradient(to top, #7386c0, #5bc0be);
-box-shadow: 0 2px 5px 2px #c0bfbf, 0 -2px 5px 2px #c0bfbf;
-} */
