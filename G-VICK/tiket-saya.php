@@ -80,10 +80,12 @@ if (isset($_SESSION["username"])) {
                     </div>
                 </div>
                 <div class="name">
-                      <?php echo $data["nama"] ?> 
-                      <a href="hapus.php?id=<?php echo $data["id_pesan"]; ?>" class="hapus">Hapus Tiket</a>
-                      <a href="edit.php?id=<?php echo $data["id_pesan"]; ?>" class="edit">Edit Tiket</a>
-                </div>  
+                    <?php echo $data["nama"] ?> 
+                    <div>
+                      <a href="edit.php?id=<?php echo $data["id_pesan"];?>" class="edit">Edit</a>
+                      <a href="hapus.php?id=<?php echo $data["id_pesan"];?>" class="batal" onclick="return confirm('Apakah Anda Yakin Ingin Membatalkan Tiket')">Batal</a>
+                    </div>
+                </div>
                 <div class="conten">
                     <div class="artis">
                         <p class="title">Artis</p>
@@ -96,6 +98,20 @@ if (isset($_SESSION["username"])) {
                     <div class="kelas">
                         <p class="title">Kelas</p>
                         <p class="deskripsi"> <?php echo $data["tiket"] ?> </p>
+                    </div>
+                </div>
+                <div class="conten2">
+                    <div class="artis">
+                        <p class="title">Email</p>
+                        <p class="deskripsi"><?php echo $data["email"] ?> </p>
+                    </div>
+                    <div class="waktu">
+                        <p class="title">Usia</p>
+                        <p class="deskripsi"><?php echo $data["usia"] ?> </p>
+                    </div>
+                    <div class="kelas">
+                        <p class="title">Harga</p>
+                        <p class="deskripsi"> <?php echo $data["harga"] ?> </p>
                     </div>
                 </div>
             </div>
@@ -157,8 +173,8 @@ if (isset($_SESSION["username"])) {
 
       <div class="contact-us">
         <h1>Concact Us</h1>
-        <form class="form"  onsubmit="return kontak()">
-          <textarea name="5" id="textarea" cols="30" rows="6" placeholder="Masukan pesan anda"></textarea>
+        <form class="form">
+          <textarea name="5" id="" cols="30" rows="6" placeholder="Masukan pesan anda"></textarea>
           <br />
           <input type="submit" name="submit" id="submit" value="Submit" class="submit" />
         </form>
@@ -174,16 +190,6 @@ if (isset($_SESSION["username"])) {
       var keluar = window.confirm("Apakah anda yakin ingin logout?");
       if (keluar) {
         window.location='hapusSession.php';
-      }
-    }
-
-    function kontak(){
-      if(document.getElementById("textarea").value ==""){
-        alert("Diisi dulu form kontak nya ya!");
-        return false;
-      }else{
-        alert("Terimakasih telah menghubungi kami!");
-        return true;
       }
     }
   </script>

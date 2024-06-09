@@ -716,3 +716,10 @@ input:focus {
 } */
 
 /* main */
+
+.boxnamakonser,.boxnamaartis,.boxtanggal,.boxlokasi,.boxjenis,.boxharga{
+  background-color: rgb(236, 235, 235);
+  /* color: #504f4f; */
+  color: rgb(66, 66, 66);
+  cursor: not-allowed;
+}

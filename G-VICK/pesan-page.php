@@ -145,7 +145,7 @@ $stokreguler = $_POST["jumlah-reguler"];
                     <tr>
                       <td>
                         <h2 class="email-pesan">Nama Konser</h2>
-                        <input type="text" name="nama_konser[]" class="boxkonser" value="<?php echo $data["nama_konser"] ?>" size="40" readonly required>
+                        <input type="text" name="nama_konser[]" class="boxnamakonser" value="<?php echo $data["nama_konser"] ?>" size="40" readonly required>
                       </td>
                       <td>
                       <h2 class="tanggal">Tanggal Konser</h2>
@@ -155,11 +155,11 @@ $stokreguler = $_POST["jumlah-reguler"];
                     <tr>
                       <td>
                         <h2 class="email-pesan">Artis Konser</h2>
-                        <input type="text" name="artis_konser[]" class="boxkonser" value="<?php echo $data["artis_konser"] ?>" size="40" readonly required>
+                        <input type="text" name="artis_konser[]" class="boxnamaartis" value="<?php echo $data["artis_konser"] ?>" size="40" readonly required>
                       </td>
                       <td>
                       <h2 class="email-pesan">Lokasi Konser</h2>
-                        <input type="text" name="lokasi_konser[]" class="boxkonser" value="<?php echo $data["lokasi_konser"] ?>" size="40" readonly required>
+                        <input type="text" name="lokasi_konser[]" class="boxlokasi" value="<?php echo $data["lokasi_konser"] ?>" size="40" readonly required>
                       </td> 
                     </tr>
                   <tr>
@@ -175,11 +175,11 @@ $stokreguler = $_POST["jumlah-reguler"];
                   <tr>
                     <td>
                       <h2 class="jenistiket">Jenis Tiket:</h2>
-                      <input type="text" name="tiket[]" id="jenistiket" class="pilihantiket" value="<?php echo $tiket[$i][0]; ?>" size="40" readonly>
+                      <input type="text" name="tiket[]" id="jenistiket" class="boxjenis" value="<?php echo $tiket[$i][0]; ?>" size="40" readonly>
                     </td>
                     <td>
                       <h2 class="harga">Total harga:</h2>
-                      <input type="text" name="harga[]" id="harga" class="totalharga" value="<?php echo $tiket[$i][1]; ?>" readonly>
+                      <input type="text" name="harga[]" id="harga" class="boxharga" value="<?php echo $tiket[$i][1]; ?>" readonly>
                     </td>
                   </tr>
                   <tr>

@@ -28,12 +28,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link rel="icon" type="images/icon.png" href="images/icon.png">
     <title>Website Pemesanan Tiket G-VicxID</title>
-    <link rel="icon" type="images/icon.png" href="images/icon.png">
     <style>
       <?php
-      
       include 'riwayat.css';
-      
       ?>
     </style>
   </head>
@@ -58,8 +55,8 @@
         <!-- Icon end -->
         <!-- Menu -->
         <div class="menu">
-          <a href="#" class="menu-navbar" id="logout">LOGOUT</a>
-          <a href="my-ticket.php" class="menu-navbar">TIKETKU</a>
+          <a href="hapusSession.php" class="menu-navbar" id="logout">LOGOUT</a>
+          <a href="tiket-saya.php" class="menu-navbar">TIKETKU</a>
           <a href="tiket-page.php" class="menu-navbar">TIKET</a>
           <a href="home-page.php" class="menu-navbar">HOME</a>
         </div>
@@ -73,7 +70,6 @@
             <a href="tiket-saya.php" class="tiket">TIKET SAYA</a>
             <a href="riwayat.php" class="riwayat">RIWAYAT TIKET</a>
         </div>
-
         <div class="cover">
           <?php foreach($tampung as $data){ ?>
             <div class="card-tiket">
@@ -86,8 +82,10 @@
                     </div>
                 </div>
                 <div class="name">
-                      <?php echo $data["nama"] ?> 
-                      <h4>Expired</h4>
+                    <?php echo $data["nama"] ?> 
+                    <div>
+                      <a href="">Expired</a>
+                    </div>
                 </div>
                 <div class="conten">
                     <div class="artis">
@@ -103,10 +101,24 @@
                         <p class="deskripsi"> <?php echo $data["tiket"] ?> </p>
                     </div>
                 </div>
+                <div class="conten2">
+                    <div class="artis">
+                        <p class="title">Email</p>
+                        <p class="deskripsi"><?php echo $data["email"] ?> </p>
+                    </div>
+                    <div class="waktu">
+                        <p class="title">Usia</p>
+                        <p class="deskripsi"><?php echo $data["usia"] ?> </p>
+                    </div>
+                    <div class="kelas">
+                        <p class="title">Harga</p>
+                        <p class="deskripsi"> <?php echo $data["harga"] ?> </p>
+                    </div>
+                </div>
             </div>
           <?php } ?>
         </div>
-
+        
     </main>
       
   <footer>
@@ -162,8 +174,8 @@
 
       <div class="contact-us">
         <h1>Concact Us</h1>
-        <form class="form"  onsubmit="return kontak()">
-          <textarea name="5" id="textarea" cols="30" rows="6" placeholder="Masukan pesan anda"></textarea>
+        <form class="form">
+          <textarea name="5" id="" cols="30" rows="6" placeholder="Masukan pesan anda"></textarea>
           <br />
           <input type="submit" name="submit" id="submit" value="Submit" class="submit" />
         </form>
@@ -181,18 +193,5 @@
         window.location='hapusSession.php';
       }
     }
-
-    function kontak(){
-      if(document.getElementById("textarea").value ==""){
-        alert("Diisi dulu form kontak nya ya!");
-        return false;
-      }else{
-        alert("Terimakasih telah menghubungi kami!");
-        return true;
-      }
-    }
-
-
-
   </script>
 </html>

@@ -82,9 +82,9 @@ for ($i=0; $i < $data; $i++) {
 }
 
 if (mysqli_affected_rows($koneksi) > 0) {
-    echo "Pemesanan Tiket Berhasil Silahkan Cek di Menu Tiket Saya";
+    header("Location: payment-notif.php");
 }else{
-    echo "Gagal Inser";
+    echo "Gagal Insert";
 }
 
 
