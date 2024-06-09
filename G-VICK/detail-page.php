@@ -27,6 +27,7 @@ $hasil = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="style-detail.css" />
     <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+    <link rel="icon" type="images/icon.png" href="images/icon.png">
     <title>Website Pemesanan Tiket G-VicxID</title>
   </head>
   <body>
@@ -146,7 +147,7 @@ $hasil = mysqli_fetch_assoc($result);
                 <form>
                   <input type="hidden" name="idkonser" value="<?php echo $hasil["id_konser"] ?>">
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-vvip" id="jumlah-vvip" min="0" placeholder="0" onkeyup="totalvvip()" onchange="totalvvip()"/>
+                  <input type="number" name="jumlah-vvip" id="jumlah-vvip" min="0" max="<?php echo $hasil["stock_vvip"] ?>" <?php if($hasil["stock_vvip"]==0){echo "readonly";} else {echo "";}?> placeholder="0" onkeyup="totalvvip()" onchange="totalvvip()"/>
                   <input type="hidden" name="harga-vvip" value="<?php echo $hasil["vvip"] ?>">
                   
             
@@ -159,7 +160,8 @@ $hasil = mysqli_fetch_assoc($result);
               <td>
                 
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-vip" id="jumlah-vip" min="0" placeholder="0" onkeyup="totalvip()" onchange="totalvip()"/>
+
+                  <input type="number" name="jumlah-vip" id="jumlah-vip" min="0" max="<?php echo $hasil["stock_vip"] ?>" <?php if($hasil["stock_vip"]==0){echo "readonly";} else {echo "";}?> placeholder="0" onkeyup="totalvip()" onchange="totalvip()"/>
                   <input type="hidden" name="harga-vip" value="<?php echo $hasil["vip"] ?>">
                  
                 
@@ -171,7 +173,7 @@ $hasil = mysqli_fetch_assoc($result);
               <td id="harga-premium"><?php echo $hasil["premium"] ?></td>
               <td>
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-premium" id="jumlah-premium" min="0" placeholder="0" onkeyup="totalpremium()" onchange="totalpremium()" />
+                  <input type="number" name="jumlah-premium" id="jumlah-premium" min="0" max="<?php echo $hasil["stock_premium"] ?>" <?php if($hasil["stock_premium"]==0){echo "readonly";} else {echo "";}?> placeholder="0" onkeyup="totalpremium()" onchange="totalpremium()" />
                   <input type="hidden" name="harga-premium" value="<?php echo $hasil["premium"] ?>">
                   
               </td>
@@ -183,7 +185,7 @@ $hasil = mysqli_fetch_assoc($result);
               <td>
              
                   <label for="jumlah-vvip">Jumlah: </label>
-                  <input type="number" name="jumlah-reguler" id="jumlah-reguler" min="0" placeholder="0" onkeyup="totalreguler()" onchange="totalreguler()"/>
+                  <input type="number" name="jumlah-reguler" id="jumlah-reguler" min="0" max="<?php echo $hasil["stock_reguler"] ?>" <?php if($hasil["stock_reguler"]==0){echo "readonly";} else {echo "";}?> placeholder="0" onkeyup="totalreguler()" onchange="totalreguler()"/>
                   <input type="hidden" name="harga-reguler" value="<?php echo $hasil["reguler"] ?>">
                 
               </td>
@@ -198,10 +200,10 @@ $hasil = mysqli_fetch_assoc($result);
               <td>
              
                   Rp. <input type="text" id="total-harga" name="total-harga" readonly value="0"/>
-                  <!-- <p id="total-harga">0</p> -->
+    
                 </td>
                 <td colspan="2">
-                  <a href="pesan-page.php>"><button type="sumbit" class="button">Beli Tiket</button></a>
+                  <button type="submit" class="button" onclick="cekKosong(event)">Beli Tiket</button>
                 </td>
               </tr>
             </form>
@@ -354,6 +356,12 @@ $hasil = mysqli_fetch_assoc($result);
       totalharga.setAttribute("value", vvip()+vip()+premium()+reguler());
    }
 
+   function cekKosong(event){
+    if ((document.getElementById("jumlah-vvip").value==0)&&(document.getElementById("jumlah-vip").value==0)&&(document.getElementById("jumlah-premium").value==0)&&(document.getElementById("jumlah-reguler").value==0)) {
+      alert("Sebelum beli tiket pastikan ada tiket yang ingin dibeli!");
+      event.preventDefault();
+    }
+   }
     
   </script>
 </html>

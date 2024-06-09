@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link rel="stylesheet" href="registrasi.css" />
+    <link rel="icon" type="images/icon.png" href="images/icon.png">
   </head>
   <style>
     <?php
@@ -57,11 +58,16 @@
             $username = $_POST["username"];
             $password = $_POST["password"];
 
-            $query = "INSERT INTO `user` (`id_user`, `nama_lengkap`, `username`, `password`, `email`, `noHp`) VALUES (NULL, '$nama', '$username', '$password', '$email', '$nohp');";
-            if (mysqli_query($koneksi, $query)) {
-              echo '<script>alert("Registrasi berhasil! Silahkan login!");window.location.href="home-page.php"</script>';
+            $cekUsername = "SELECT * FROM `user` WHERE `username` = '$username'";
+            if (mysqli_query($koneksi, $cekUsername)) {
+              echo '<script>alert("Registrasi gagal! Username sudah ada, silahkan gunakan username yang lain!");</script>';
             } else {
-              echo '<p id="notif">Registrasi gagal<p>';
+              $query = "INSERT INTO `user` (`id_user`, `nama_lengkap`, `username`, `password`, `email`, `noHp`) VALUES (NULL, '$nama', '$username', '$password', '$email', '$nohp');";
+              if (mysqli_query($koneksi, $query)) {
+                echo '<script>alert("Registrasi berhasil! Silahkan login!");window.location.href="home-page.php"</script>';
+              } else {
+                echo '<p id="notif">Registrasi gagal<p>';
+              }
             }
           }
           mysqli_close($koneksi);
