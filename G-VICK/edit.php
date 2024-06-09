@@ -1,11 +1,18 @@
 <?php
     session_start();
     require 'koneksi.php';
+    
+    if (!isset($_SESSION["username"])) {
+        header("location: login.php");
+        exit;
+    }
 
-
-
-
-?>
+    $id = $_GET["id"];
+    $username = $_SESSION["username"];
+    $query = "SELECT * FROM data_pemesanan WHERE id_pesan = $id";
+    $result = mysqli_query($koneksi,$query);
+    $data = mysqli_fetch_assoc($result);
+?>  
 
 
 <!DOCTYPE html>
@@ -55,9 +62,91 @@
         <!-- Navbar end -->
         </header>
         
+        <main>
+
+            <div class="flex">
+            <table class="formtb">
+                  <tr>
+                  <td>
+                   <p>Update Tiket</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td> 
+                    <h2 class="nama">Nama</h2>
+                    <input type="text" name="nama[]" class="boxnama" value="<?php echo $data['nama']?> " size="40" height="50" required >
+                  </td>
+                  <td>
+                        <h2 class="email-pesan">E-mail</h2>
+                        <input type="email" name="email[]" class="boxemail" value="<?php echo $data["email"] ?>" size="40" required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h2 class="email-pesan">Nama Konser</h2>
+                        <input type="text" name="nama_konser[]" class="boxkonser" value="<?php echo $data["nama_konser"] ?>" size="40" readonly required>
+                      </td>
+                      <td>
+                      <h2 class="tanggal">Tanggal Konser</h2>
+                        <input type="text" name="tanggal_konser[]" class="boxtanggal" value="<?php echo $data["tanggal_konser"] ?>" size="40" required readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h2 class="email-pesan">Artis Konser</h2>
+                        <input type="text" name="artis_konser[]" class="boxkonser" value="<?php echo $data["artis_konser"] ?>" size="40" readonly required>
+                      </td>
+                      <td>
+                      <h2 class="email-pesan">Lokasi Konser</h2>
+                        <input type="text" name="lokasi_konser[]" class="boxkonser" value="<?php echo $data["lokasi_konser"] ?>" size="40" readonly required>
+                      </td> 
+                    </tr>
+                  <tr>
+                    <td>
+                      <h2 class="notelpon">Nomor telepon</h2>
+                      <input type="text" name="noHp[]" value="<?php echo $data['noHp']?>" required size="40">
+                    </td>
+                    <td>
+                      <h2 class="usia">Usia</h2>
+                      <input type="number" name="usia[]" class="age" value="<?php echo $data['usia']?>" max="99" min="0" size="40" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h2 class="jenistiket">Jenis Tiket:</h2>
+                      <input type="text" name="tiket[]" id="jenistiket" class="pilihantiket" value="<?php echo $data["harga"]; ?>" size="40" readonly>
+                    </td>
+                    <td>
+                      <h2 class="harga">Total harga:</h2>
+                      <input type="text" name="harga[]" id="harga" class="totalharga" value="<?php echo $tiket[$i][1]; ?>" readonly>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <!-- <button type="reset" value="Reset" class="reset1">Reset</button>
+                      <div class="kotak">
+                        <button type="button" class="Cancel" onclick="location.href = 'detail-page.html' ">Cancel</button>
+                        <button type="submit" name="submit" id="submit" value="Lanjutkan" class="isipesan" size="3" onclick="location.href = 'notif.html' ">Lanjutkan</button>
+                      </div> -->
+                      
+                    </td>
+                  </tr>
+                </table>
+                <?php  ?>
+              </div>
+              <div class="kotak">
+                  <a href="tiket-saya.php" class="batal">Batal</a>
+                  <!-- <button type="submit" name="pesan" id="submit" value="Lanjutkan" class="isipesan" size="3" onclick="location.href = 'notif.html' ">Lanjutkan</button> -->
+                  <!-- <button type="submit" name="pesan" id="submit" value="Lanjutkan" class="isipesan" size="3" onclick="cek()">Lanjutkan</button> -->
+                  <button type="submit" name="pesan" id="pesan" value="Lanjutkan" class="isipesan" size="3" onclick="cek()">Update</button>
+              </div>
+            </form>  
+            </div>
 
 
 
+        
+        </main>
 
         <footer>
             <div class="keterangan-footer">
