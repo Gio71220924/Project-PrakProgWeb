@@ -81,8 +81,8 @@ if (isset($_SESSION["username"])) {
                 </div>
                 <div class="name">
                       <?php echo $data["nama"] ?> 
-                      <a href="" class="hapus">Hapus Tiket</a>
-                      <a href="edit" class="edit">Edit Tiket</a>
+                      <a href='hapus.php?id= $data["id_pesan"]' class="hapus">Hapus Tiket</a>
+                      <a href="edit.php" class="edit">Edit Tiket</a>
                 </div>
                 <div class="conten">
                     <div class="artis">
