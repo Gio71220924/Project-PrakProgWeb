@@ -1,6 +1,5 @@
 <?php
 require 'koneksi.php';
-
 if (isset($_POST["edit"])) {
   $id = $_POST["idPesan"];
   $nama = $_POST["nama"];
@@ -14,7 +13,7 @@ if (isset($_POST["edit"])) {
             noHp = '$noHp',
             usia = '$usia' WHERE id_pesan = $id";
   mysqli_query($koneksi,$query);
-  if (mysqli_affected_rows($koneksi) >0) {
+  if (mysqli_affected_rows($koneksi) > 0) {
     header("Location: tiket-saya.php");
   }
 }
@@ -24,6 +23,20 @@ $id_pesan = $_GET["id"];
 $query = "SELECT * FROM data_pemesanan WHERE id_pesan = $id_pesan";
 $result = mysqli_query($koneksi,$query);
 $data = mysqli_fetch_assoc($result);
+
+$namakonser = $data["nama_konser"];
+$querydatakonser = "SELECT nama from data_pemesanan WHERE nama_konser = '$namakonser'";
+$resull2 = mysqli_query($koneksi,$querydatakonser);
+$arraynama = [];
+while ($row = mysqli_fetch_assoc($resull2)) {
+      $arraynama[] = $row;
+}
+
+$arraynama2 = [];
+foreach ($arraynama as $dt) {
+    $arraynama2[] = $dt["nama"];
+}
+
 
 ?>
 
@@ -84,12 +97,17 @@ $data = mysqli_fetch_assoc($result);
         <h1>Form Edit Data Diri</h1>
       </div>  
       <hr>  
-            <form class="formall" method="post" action="">
+            <form class="formall" method="post" action="edit.php">
               <div class="flex">
             
                 <table class="formtb">
                 <tr>
                   <td> 
+                    <?php
+                    for ($i=0; $i < count($arraynama2); $i++) {  ?>
+                        <input type="hidden" name="datanama" class="datanama" value="<?php echo $arraynama2[$i]; ?>">
+                    <?php } ?>
+                    <input type="hidden" name="namahidden" class="namahidden" value="<?php echo $data["nama"]; ?>">
                     <h2 class="nama">Nama</h2>
                      <input type="hidden" name="idPesan" value="<?php echo $data["id_pesan"]; ?>">
                     <input type="text" name="nama" class="boxnama" size="40" height="50" required value="<?php echo $data["nama"]; ?>">
@@ -141,14 +159,13 @@ $data = mysqli_fetch_assoc($result);
                   </tr>
                   <tr>
                     <td>
-                      
                     </td>
                   </tr>
                 </table>
               </div>
               <div class="kotak">
                   <a href="tiket-saya.php">Batal </a>
-                  <button type="submit" name="edit" id="pesan" class="isipesan" size="3">Edit</button>
+                  <button type="submit" name="edit" id="pesan" class="isipesan" size="3" onclick="cek()">Edit</button>
               </div>
             </form>
   </main>
@@ -224,6 +241,43 @@ $data = mysqli_fetch_assoc($result);
       var keluar = window.confirm("Apakah anda yakin ingin logout?");
       if (keluar) {
         window.location='hapusSession.php';
+      }
+    }
+
+    function tangkapnama(){
+        const nama = document.getElementsByClassName("namahidden")[0].value;
+        return nama;
+        
+    }
+
+    function cek(){
+      var datanama = document.getElementsByClassName("datanama").length;
+      const arraydatanama = [];
+      for (let index = 0; index < datanama; index++) {
+        let nama = document.getElementsByClassName("datanama")[index].value;
+        arraydatanama.push(nama.toLowerCase());
+      }
+
+      var nama = document.getElementsByClassName("boxnama")[0].value
+
+      if (nama == tangkapnama()) {
+          var tombol = document.getElementById("pesan");
+          tombol.setAttribute("type","submit");
+      }else{
+        if (arraydatanama.includes(nama.toLowerCase()) == true) {
+            var konfirmasi = confirm("Maaf Nama "+nama+" Sudah Terdaftar");
+            if (konfirmasi == true) {
+                var tombol = document.getElementById("pesan");
+                tombol.setAttribute("type","button");
+            }
+            else{
+                var tombol = document.getElementById("pesan");
+                tombol.setAttribute("type","button");
+            }
+        }else{
+              var tombol = document.getElementById("pesan");
+              tombol.setAttribute("type","submit");
+        }
       }
     }
   </script>

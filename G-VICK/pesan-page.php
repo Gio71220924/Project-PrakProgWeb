@@ -46,6 +46,23 @@ $stokvip = $_POST["jumlah-vip"];
 $stokpremium = $_POST["jumlah-premium"];
 $stokreguler = $_POST["jumlah-reguler"];
 
+//select data pemesanan
+$namakonser = $data["nama_konser"];
+$querypesan =  "SELECT nama FROM data_pemesanan WHERE nama_konser = '$namakonser'";
+$hasil = mysqli_query($koneksi,$querypesan);
+$arraynama = [];
+while ($row = mysqli_fetch_assoc($hasil)) {
+      $arraynama[] = $row;
+}
+
+$tampungnama = [];
+if (count($arraynama) == 0) {
+  $tampungnama[] = "";
+}else{
+  foreach ($arraynama as $dt) {
+    $tampungnama[] = $dt["nama"];
+  }
+}
 
 ?>
 
@@ -121,6 +138,10 @@ $stokreguler = $_POST["jumlah-reguler"];
               <input type="hidden" name="datavip" value="<?php echo $stokvip ?>">
               <input type="hidden" name="datapre" value="<?php echo $stokpremium ?>">
               <input type="hidden" name="datareg" value="<?php echo $stokreguler ?>">
+              <?php
+              for ($i=0; $i < count($tampungnama); $i++) { ?>
+                    <input type="hidden" name="datanama[]" value="<?php echo $tampungnama[$i];?>" class="datanama">
+              <?php } ?>
               
               <div class="flex">
               <?php
@@ -279,6 +300,15 @@ $stokreguler = $_POST["jumlah-reguler"];
     }
 
     function cek(){
+
+      var datanama = document.getElementsByClassName("datanama").length;
+      const arraydatanama =[];
+      for (let index = 0; index < datanama; index++) {
+          let nama = document.getElementsByClassName("datanama")[index].value
+          arraydatanama.push(nama.toLowerCase());
+      }
+
+
       var data =  document.getElementsByClassName("boxnama").length;
       const tampungnama = [];
       for (let index = 0; index < data; index++) {
@@ -286,6 +316,12 @@ $stokreguler = $_POST["jumlah-reguler"];
         tampungnama.push(nama.toLowerCase());
       }
 
+      var concat = arraydatanama.concat(tampungnama);
+      var setconcat = new Set(concat);
+      var instersection = arraydatanama.filter(element => tampungnama.includes(element));
+      var converstring = instersection.toString();
+
+  
       const duplicate = new Set(tampungnama);
       if (tampungnama.length != duplicate.size) {
           var konfirmasi = confirm("Maaf Nama Yang Anda Masukkan Ada Yang Sama");
@@ -297,10 +333,20 @@ $stokreguler = $_POST["jumlah-reguler"];
             var tombol = document.getElementById("pesan");
             tombol.setAttribute("type","button");
           }
-    }else{
-      var tombol = document.getElementById("pesan");
-      tombol.setAttribute("type","submit");
-    }
+      }else if (concat.length != setconcat.size) {
+          var konfirmasi = confirm("Maaf Nama "+ converstring + " Sudah Terdaftar");
+          if (konfirmasi == true) {
+            var tombol = document.getElementById("pesan");
+            tombol.setAttribute("type","button");
+          }
+          else{
+            var tombol = document.getElementById("pesan");
+            tombol.setAttribute("type","button");
+          }
+      }else{
+        var tombol = document.getElementById("pesan");
+        tombol.setAttribute("type","submit");
+      }
   }
 
   function kontak(){
